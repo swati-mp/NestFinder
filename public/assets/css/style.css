@@ -2056,3 +2056,13 @@ html.menu-opened body {
         display: none !important; 
     }
 }
+
+
+.sidebarimage{
+    display: flex;
+    justify-content: center;
+}
+.sidebarimage img{
+    width: 80%;
+    border-radius: 50%;
+}
