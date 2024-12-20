@@ -14,13 +14,8 @@ const port =process.env.PORT || 4001
 //Below Code used to connect to database
 require("./database/database")
 
-//Below code is to setup static files for different routes
+//Below code is to setup static files for all routes
 app.use(express.static(path.join(__dirname,"public")))
-app.use("/admin",express.static(path.join(__dirname,"public","Admin")))
-app.use("/owner",express.static(path.join(__dirname,"public","Owner")))
-app.use("/seeker",express.static(path.join(__dirname,"public","Seeker")))
-app.use("/auth",express.static(path.join(__dirname,"public","Auth")))
-app.use("/home",express.static(path.join(__dirname,"public","Home")))
 
 //Below code will help to parse form data
 app.use(express.urlencoded({extended:true}))
