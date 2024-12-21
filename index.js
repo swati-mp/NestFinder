@@ -39,7 +39,7 @@ const seekerRoutes = require("./routes/Seeker/seekerRoutes")
 //Below code is to setup routes for all modules(Admin,Owner,Seeker) and home(Entrypoint) and auth(login,register)
 app.use("/admin",adminRoutes)
 app.use("/auth",authRoutes)
-app.use("/home",homeRoutes)
+app.use("/",homeRoutes)
 app.use("/owner",ownerRoutes)
 app.use("/seeker",seekerRoutes)
 
