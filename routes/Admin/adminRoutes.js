@@ -9,7 +9,9 @@ router.use((req, res, next) => {
 });
 
 const {getAdmin}=require("../../controllers/Admin/adminController")
-
 router.get("/",getAdmin)
+
+const {getOwnerdata}=require("../../controllers/Admin/ownerdataController")
+router.get("/ownerdata",getOwnerdata)
 
 module.exports = router
