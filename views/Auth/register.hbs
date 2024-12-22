@@ -1,12 +1,54 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Nest Finder - Register</title>
+    <link rel="stylesheet" href="/home.css">
     <link rel="stylesheet" href="/register.css">
 </head>
+
 <body>
-    Register
+    <div class="container">
+        <header class="header">
+            <nav class="nav">
+                <div class="logo">
+                    <img class="logo-circle" src="/assets/img/Shicon.webp" alt="Logo">
+                    <h1>Nest Finder</h1>
+                </div>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="#about">About Us</a>
+                    <a href="/auth/login">Login</a>
+                    <a href="/auth/register">SignUp</a>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Register Section -->
+        <main class="register-section">
+            <h2 class="register-title">Register</h2>
+            <div id="successMessage" class="success-message">
+                {{!-- 🎉 Registration Successful! --}}
+            </div>
+            <form id="registerForm" class="register-form">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="Enter your password" required>
+                </div>
+                <button type="submit" class="submit-btn">Register</button>
+            </form>
+            
+        </main>
+    </div>
 </body>
 </html>
