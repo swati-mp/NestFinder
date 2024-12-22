@@ -18,8 +18,8 @@
                 </div>
                 <div class="nav-links">
                     <a href="/">Home</a>
-                    <a href="#search">Search</a>
-                    <a href="#search">About Us</a>
+                    <a href="#search" id="search-link">Search</a>
+                    <a href="/aboutus">About Us</a>
                     <a href="/auth/login">Login</a>
                     <a href="/auth/register">SignUp</a>
                 </div>
@@ -35,7 +35,7 @@
                         <option value="apartment">No. of Rooms</option>
                         <option value="villa">Rent</option>
                     </select>
-                    <input type="text" id="#search" class="search-input" placeholder="Search properties...">
+                    <input type="text" id="search" class="search-input" placeholder="Search properties...">
                     <button class="search-btn">Search</button>
                 </div>
             </div>
@@ -65,6 +65,14 @@
             </div>
         </main>
     </div>
+    <script>
+        document.getElementById('search-link').addEventListener('click', function (event) {
+    event.preventDefault(); // Prevent default anchor behavior
+    const searchInput = document.getElementById('search');
+    searchInput.focus(); // Focus on the input field
+});
+
+    </script>
 </body>
 
 </html>

@@ -104,12 +104,17 @@ body {
 
 .search-btn {
     background: #4CAF50;
+    background: rgb(228, 77, 7);
     color: white;
     border: none;
     padding: 10px 20px;
     border-radius: 20px;
     cursor: pointer;
     margin-left: 10px;
+    font-size: 1.3rem;
+}
+.search-btn:hover{
+    background: rgb(169, 59, 8);
 }
 
 .all-properties {
@@ -230,4 +235,8 @@ body {
     font-size: 14px;
     background-color: white;
     color: #444;
+}
+
+::selection{
+    background-color: rgb(80, 99, 224);
 }

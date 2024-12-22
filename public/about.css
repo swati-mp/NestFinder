@@ -1,0 +1,93 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+.header {
+    height: 130px;
+}
+
+/* About Section */
+.about-section {
+    padding: 40px;
+    text-align: center;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 20px;
+    margin: 20px auto;
+    max-width: 1200px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.about-title {
+    font-size: 2.5rem;
+    /* color: #333; */
+    color: aliceblue;
+    color: orange;
+    margin-bottom: 30px;
+    font-weight: bold;
+}
+
+/* About Content */
+.about-content {
+    display: grid;
+    grid-template-columns: 0.7fr 1fr;
+    /* flex-wrap: wrap; */
+    justify-content: center;
+    gap: 20px;
+}
+
+.about-img {
+    /* flex: 1; */
+    /* max-width: 500px; */
+    /* width: 50%; */
+    width: 20vw;
+    height: 20vw;
+    border-radius: 50%;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    margin: auto;
+}
+
+.aboutsidecontent{
+    color: aliceblue;
+    font-size: 1.6rem;
+    line-height: 1.5;
+    text-align: left;
+    p{
+        margin-top: 20px;
+    }
+}
+
+.about-text {
+    grid-area: 2/1/3/3;
+    flex: 2;
+    text-align: left;
+    font-size: 1.3rem;
+    /* color: #555; */
+    color: aliceblue;
+    line-height: 1.8;
+}
+
+.about-text h3 {
+    margin-top: 20px;
+    font-size: 1.6rem;
+    color: #4CAF50;
+    font-weight: bold;
+}
+
+.about-text p {
+    margin-bottom: 15px;
+}
+
+.about-text ul {
+    margin: 15px 0;
+    padding-left: 20px;
+}
+
+.about-text ul li {
+    margin-bottom: 10px;
+    list-style-type: disc;
+    line-height: 1.8;
+    color: #333;
+    color: aliceblue;
+}
