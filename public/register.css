@@ -10,7 +10,7 @@
 
 /* Adjust container padding */
 .register-section {
-    padding: 40px;
+    padding: 20px;
     text-align: center;
     background: rgba(23, 21, 21, 0.5);
     border-radius: 20px;
@@ -47,13 +47,14 @@
     color: white;
 }
 
-.form-group input {
+.form-group input,.form-group select {
     padding: 10px;
     border: none;
     border-radius: 5px;
-    font-size: 1rem;
+    font-size: 1.2rem;
     outline: none;
     border: 2px solid #ccc;
+    color: black;
 }
 
 .form-group input:focus {
