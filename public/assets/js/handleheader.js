@@ -30,3 +30,8 @@ toggleButton.addEventListener('click', function () {
 window.addEventListener('resize', function () {
     hideTitleOnMobile();  // Adjust the title visibility based on screen size
 });
+
+// After Logout Below Code will prevent user from accessing Admin Seeker Owner page
+if (!document.cookie.includes('email')) {
+    window.location.replace('/');
+}

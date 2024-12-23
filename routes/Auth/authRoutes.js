@@ -12,8 +12,11 @@ const {getLogin,postLogin}=require("../../controllers/Auth/loginController")
 router.get("/login",getLogin)
 router.post("/login",postLogin)
 
-const {getRegister,postRegister}=require("../../controllers/Auth/registerController")
+const {getRegister,postRegister}=require("../../controllers/Auth/registerController");
 router.get("/register",getRegister)
 router.post("/register",postRegister)
+
+const { getLogout } = require("../../controllers/Auth/logoutController");
+router.post("/logout",getLogout)
 
 module.exports = router
