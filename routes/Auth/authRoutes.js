@@ -8,8 +8,9 @@ router.use((req, res, next) => {
     next();
 });
 
-const {getLogin}=require("../../controllers/Auth/loginController")
+const {getLogin,postLogin}=require("../../controllers/Auth/loginController")
 router.get("/login",getLogin)
+router.post("/login",postLogin)
 
 const {getRegister,postRegister}=require("../../controllers/Auth/registerController")
 router.get("/register",getRegister)
