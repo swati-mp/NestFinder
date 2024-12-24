@@ -2,6 +2,7 @@ const { owners } = require("../../model/Owner/ownerSchema");
 const { seekers } = require("../../model/Seeker/seekerSchema");
 const path = require("path")
 const bcrypt = require("bcryptjs")
+const jwt=require("jsonwebtoken")
 const express=require("express")
 const router=express.Router();
 
@@ -13,6 +14,12 @@ const getLogin = (req, res) => {
 // Below is Login Api
 const postLogin = async (req, res) => {
     try {
+        // Set Token function
+        async function setToken(key,email){
+            const token=await jwt.sign({email:email},key,{expiresIn:"2h"})
+            res.cookie('token',token)
+        }
+        
         // Set Cookie Function
         function setCookie(email){
             res.cookie("email", email, {
@@ -26,6 +33,7 @@ const postLogin = async (req, res) => {
         if (email == process.env.Admin_Email && password == process.env.Admin_password) {
             req.app.set("views", path.join(__dirname, "../../views/Admin"));
             setCookie(email)
+            setToken(process.env.ADMIN_KEY,email)
             return res.render("admin")
         }
 
@@ -38,6 +46,7 @@ const postLogin = async (req, res) => {
         if (owner && await bcrypt.compare(password, owner.password)) {
             req.app.set("views", path.join(__dirname, "../../views/Owner"));
             setCookie(email)
+            setToken(process.env.OWNER_KEY,email)
             return res.render("owner")
         }  
         
@@ -46,6 +55,7 @@ const postLogin = async (req, res) => {
         if (seeker && await bcrypt.compare(password, seeker.password)) {
             req.app.set("views", path.join(__dirname, "../../views/Seeker"));
             setCookie(email)
+            setToken(process.env.SEEKER_KEY,email)//Set a token to logged in user
             return res.render("seeker")
         } 
     

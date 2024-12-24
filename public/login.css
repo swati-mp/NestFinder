@@ -81,7 +81,7 @@
 /* Error message */
 .error-message {
     margin: auto;
-    width: 26vw;
+    width: fit-content;
     padding: 20px;
     margin-top: 20px;
     font-size: 1.6rem;
