@@ -14,4 +14,7 @@ const {getSeeker}=require("../../controllers/Seeker/seekerController")
 
 router.get("/",seekerAuth,getSeeker)
 
+const {getSeekerProfile} = require("../../controllers/Seeker/seekerprofileController")
+router.get("/seekerprofile",getSeekerProfile)
+
 module.exports = router
