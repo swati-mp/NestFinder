@@ -14,4 +14,12 @@ const {getOwner}=require("../../controllers/Owner/ownerController")
 
 router.get("/",ownerAuth,getOwner)
 
+const {getOwnerProfile}=require("../../controllers/Owner/ownerprofileController")
+router.get("/ownerprofile",getOwnerProfile)
+
+const {getAddProperty}=require("../../controllers/Owner/addpropertiesController")
+router.get("/owneraddproperties",getAddProperty)
+
+const {getMyProperty}=require("../../controllers/Owner/mypropertiesController")
+router.get("/ownermyproperties",getMyProperty)
 module.exports = router
