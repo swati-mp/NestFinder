@@ -20,4 +20,13 @@ router.get("/seekerprofile",getSeekerProfile)
 const {getSubmittedInquries} = require("../../controllers/Seeker/submittedinquriesController")
 router.get("/submittedinquries",getSubmittedInquries)
 
+const {getHistory} = require("../../controllers/Seeker/seekerhistoryController")
+router.get("/seekerhistory",getHistory)
+
+const {getSeekerWishlist} = require("../../controllers/Seeker/seekerwishlistController")
+router.get("/seekerwishlist",getSeekerWishlist)
+
+const {getSeekerComplaint} = require("../../controllers/Seeker/seekercomplaintController")
+router.get("/seekercomplaint",getSeekerComplaint)
+
 module.exports = router
