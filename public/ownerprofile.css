@@ -5,7 +5,7 @@
     padding: 20px;
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
     gap: 20px;
 }
 
@@ -15,7 +15,7 @@
     overflow: hidden;
     margin: 0 auto;
     border: 5px solid #2575fc;
-    grid-area: 1/1/2/3;
+    /* grid-area: 1/1/2/3;/ */
 }
 
 .profile-picture img {
@@ -41,6 +41,7 @@
 
 .profile-field input {
     width: calc(100% - 10px);
+    /* min-width: 35vw; */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
@@ -57,9 +58,17 @@
     border-radius: 5px;
     font-weight: bold;
     transition: background 0.3s ease;
-    width: 10vw;
+    width: 150px;
+    white-space: nowrap;
 }
 
 .update-button:hover {
     background: #1a5dc9;
+}
+
+@media only screen and (max-width: 768px)
+{
+    .profile-container{
+        grid-template-columns: 1fr ;
+    }
 }
