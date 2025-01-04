@@ -127,21 +127,22 @@
                 </li> --}}
                 <li class="nav-item dropdown has-arrow">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
-                        <span class="user-img"><img class="rounded-circle" src="/assets/img/Shicon.webp" width="31"
+                        <span class="user-img"><img class="rounded-circle" src="/assets/img/admin3.jpg" width="31"
                                 alt="Ryan Taylor"></span>
                     </a>
                     <div class="dropdown-menu">
                         <div class="user-header">
                             <div class="avatar avatar-sm">
-                                <img src="/assets/img/Shicon.webp" alt="User Image" class="avatar-img rounded-circle">
+                                <img src="/assets/img/admin3.jpg" alt="User Image" class="avatar-img rounded-circle">
                             </div>
                             <div class="user-text">
-                                <h6>Ryan Taylor</h6>
+                                <h6>{{adminname}}</h6>
                                 <p class="text-muted mb-0">Administrator</p>
                             </div>
                         </div>
                         <a class="dropdown-item" href="/admin/adminprofile">My Profile</a>
-                        <a class="dropdown-item" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
+                        <a class="dropdown-item"
+                            onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
                     </div>
                 </li>
             </ul>

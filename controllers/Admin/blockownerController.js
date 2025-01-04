@@ -1,5 +1,7 @@
 const getBlockOwner=(req,res)=>{
-    res.render("blockowner")
+    res.render("blockowner",{
+        adminname:process.env.Admin_Name
+    })
 }
 
 module.exports={

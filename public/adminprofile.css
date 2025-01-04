@@ -1,0 +1,99 @@
+/* Profile container styling */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    width: 100%;
+    height: 70vh;
+}
+
+/* Profile card styling */
+.profile-card {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    padding: 30px;
+    transition: transform 0.3s, box-shadow 0.3s;
+    color: #333;
+    width: 100%;
+    height: 70vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.profile-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Profile image styling */
+.profile-image img {
+    border-radius: 50%;
+    width: 25vw;
+    height: 25vw;
+    object-fit: cover;
+    transition: transform 0.3s, border-color 0.3s;
+}
+
+.profile-image img:hover {
+    transform: scale(1.1);
+    border-color: #2575fc;
+}
+
+/* Profile name styling */
+.profile-name {
+    font-size: 1.8em;
+    margin: 15px 0 10px;
+    color: #333;
+}
+
+/* Profile email styling */
+.profile-email {
+    font-size: 1.5em;
+    color: #666;
+}
+
+/* Responsive design for tablets and below */
+@media (max-width: 768px) {
+    .profile-card {
+        flex-direction: column;
+        width: 90%;
+        height: auto;
+        padding: 20px;
+    }
+
+    .profile-image img {
+        width: 40vw;
+        height: 40vw;
+    }
+
+    .profile-name {
+        font-size: 1.5em;
+    }
+
+    .profile-email {
+        font-size: 1.2em;
+    }
+}
+
+/* Further adjustments for very small screens */
+@media (max-width: 480px) {
+    .profile-card {
+        padding: 15px;
+    }
+
+    .profile-name {
+        font-size: 1.2em;
+    }
+
+    .profile-email {
+        font-size: 1em;
+    }
+
+    .profile-image img {
+        width: 50vw;
+        height: 50vw;
+    }
+}
