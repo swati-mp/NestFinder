@@ -1,0 +1,110 @@
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    font-size: 14px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    color: #000;
+    font-size: 15px;
+}
+
+/* Header styling */
+thead tr {
+    background-color: #4a90e2;
+    color: white;
+    text-align: left;
+    font-weight: 600;
+}
+
+/* Cell padding and borders */
+th, td {
+    padding: 12px 15px;
+    border-bottom: 1px solid #dddddd;
+    width: fit-content;
+}
+
+/* Alternate row colors */
+tbody tr:nth-of-type(even) {
+    background-color: #f8f9fa;
+}
+
+/* Hover effect on rows */
+tbody tr:hover {
+    background-color: #f2f7ff;
+    transition: background-color 0.3s ease;
+}
+
+/* Status cell styling */
+td:nth-last-child(2) {
+    font-weight: 600;
+}
+
+td:nth-last-child(2)[innerHTML*="Available"] {
+    color: #28a745;
+}
+
+/* Button styling */
+.approve {
+    background-color: #4a90e2;
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s ease;
+    white-space: nowrap;
+    margin: 5px;
+}
+
+.approve:hover {
+    background-color: #357abd;
+}
+
+/* Link styling */
+tr{
+    a {
+        color: #4a90e2;
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    a:hover {
+        text-decoration: underline;
+    }
+}
+
+
+/* Make table responsive */
+@media screen and (max-width: 768px) {
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+}
+
+/* Price/Rent styling */
+td:nth-child(4),
+td:nth-child(5) {
+    font-weight: 600;
+    color: #2c3e50;
+}
+
+/* Address cell styling */
+td:nth-child(6) {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Date styling */
+td:nth-last-child(3) {
+    color: #666;
+}
