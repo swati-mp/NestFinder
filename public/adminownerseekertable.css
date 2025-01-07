@@ -1,0 +1,89 @@
+/* Table Container Styles */
+.profile-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 20px 0;
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    border: 2px solid black;
+}
+
+/* Header Styles */
+.profile-table thead th {
+    background-color: #0e1054;
+    color: white;
+    padding: 16px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 3px solid #000000;
+    text-align: center;
+}
+
+/* Table Body Styles */
+.profile-table tbody td {
+    padding: 16px;
+    border-bottom: 1px solid #eef2f7;
+    color: #030303;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    font-weight: bold;
+    border: 1px solid black;
+
+}
+
+/* Row Hover Effect */
+.profile-table tbody tr:hover {
+    background-color: #bac5cc;
+}
+
+/* Last Row Styling */
+.profile-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+/* Profile Image Styles */
+.profile-image {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Email and Phone Number Styles */
+.profile-table td:nth-child(5),
+.profile-table td:nth-child(6) {
+    color: #000000;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+
+    .profile-table thead th {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    .profile-table tbody td {
+        padding: 12px;
+        font-size: 13px;
+    }
+
+    .profile-image {
+        width: 40px;
+        height: 40px;
+    }
+}
