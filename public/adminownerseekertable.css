@@ -9,6 +9,7 @@
     overflow: hidden;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     border: 2px solid black;
+    overflow: auto;
 }
 
 /* Header Styles */
@@ -23,6 +24,7 @@
     letter-spacing: 0.5px;
     border-bottom: 3px solid #000000;
     text-align: center;
+    white-space: nowrap;
 }
 
 /* Table Body Styles */
@@ -35,7 +37,6 @@
     text-align: center;
     font-weight: bold;
     border: 1px solid black;
-
 }
 
 /* Row Hover Effect */
@@ -69,7 +70,6 @@
     .profile-table {
         display: block;
         overflow-x: auto;
-        white-space: nowrap;
     }
 
     .profile-table thead th {
@@ -86,4 +86,37 @@
         width: 40px;
         height: 40px;
     }
+}
+
+
+
+
+.complaint-details tbody td {
+    text-align: left;
+}
+
+.read-btn {
+    /* Base styles */
+    padding: 8px 20px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #ffffff;
+    background: linear-gradient(145deg, #4CAF50, #45a049);
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    overflow: hidden;
+}
+
+/* Hover state */
+.read-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15);
+    background: linear-gradient(145deg, #45a049, #3d8b40);
 }

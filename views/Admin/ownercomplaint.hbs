@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/adminownerseekertable.css">
 </head>
 
 <body>
@@ -167,8 +168,8 @@
                             </ul> --}}
                         </li>
                         <li class="">
-                            <a href="/admin/adminprofile"><i class="fas fa-user-circle"></i> <span>MyProfile</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/admin/adminprofile"><i class="fas fa-user-circle"></i> <span>MyProfile</span>
+                                <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="index.html" class="active">Admin Dashboard</a></li>
                                 <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
@@ -194,18 +195,18 @@
                                 <li><a href="/admin/seekerdata">Seekers</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="menu-title">
                             <span>Management</span>
                         </li>
                         {{!-- <li class="submenu">
                             <a href="#"><i class="fas fa-building"></i> <span> Gallary of Properties </span> <span
                                     class="menu-arrow"></span></a>
-                             <ul>
+                            <ul>
                                 <li><a href="departments.html">Department List</a></li>
                                 <li><a href="add-department.html">Department Add</a></li>
                                 <li><a href="edit-department.html">Department Edit</a></li>
-                            </ul> 
+                            </ul>
                         </li> --}}
                         <li class="submenu active">
                             <a href="#"><i class="fas fa-exclamation-circle"></i> <span> User Complaints</span> <span
@@ -231,7 +232,7 @@
                                 <li><a href="/admin/unblockseeker">Seekers</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="menu-title">
                             <span>Logout</span>
                         </li>
@@ -240,7 +241,8 @@
                                 <!-- You can keep it hidden so it won't affect the UI -->
                                 <button type="submit" style="display: none;">Logout</button>
                             </form>
-                            <a href="#" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
+                            <a href="#"
+                                onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
                                     class="fas fa-shield-alt"></i> <span> Logout </span> <span
                                     class="menu-arrow"></span></a>
                         </li>
@@ -260,13 +262,34 @@
                         </div>
                     </div>
                 </div>
-                {{!-- <div class="row">
-                    Hello
-                </div> --}}
+                <div class="row">
+                    <table class="profile-table complaint-details">
+                        <thead>
+                            <tr>
+                                <th>Owner Id</th>
+                                <th>Owner Email</th>
+                                <th>Complaint Title</th>
+                                <th>Complaint Details</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>johndoe@example.com</td>
+                                <td>ABC</td>
+                                <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea maxime dolor voluptates
+                                    ut libero? Ipsam velit, debitis maiores cum expedita optio impedit consequuntur eos,
+                                    quibusdam placeat distinctio excepturi similique totam.</td>
+                                <td><button class="read-btn">Read</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
-    
+
 
     <script src="/assets/js/jquery-3.6.0.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
