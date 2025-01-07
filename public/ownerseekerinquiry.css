@@ -1,0 +1,116 @@
+.inquiry-container {
+    width: 100%;
+
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+th,
+td {
+    border: 1px solid #ddd;
+    padding: 12px;
+    text-align: left;
+}
+
+th {
+    background-color: #007BFF;
+    color: white;
+}
+
+/* General Button Styling */
+.read-button {
+    background: linear-gradient(135deg, #28a745, #218838);
+    /* Gradient Green */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    /* Rounded Edges */
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    /* Subtle Shadow */
+    transition: all 0.3s ease;
+    outline: none;
+    border: 2px solid transparent;
+}
+
+/* Hover Effect */
+.read-button:hover {
+    background: linear-gradient(135deg, #218838, #1e7e34);
+    transform: translateY(-3px);
+    /* Slight Lift */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Button when clicked (active state) */
+.read-button:active {
+    transform: translateY(1px);
+    /* Slight Press Effect */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Disabled Button Styling */
+.read-button:disabled {
+    background: linear-gradient(135deg, #6c757d, #5a6268);
+    /* Greyed Out */
+    cursor: not-allowed;
+    box-shadow: none;
+    border: 2px solid #ddd;
+    transform: none;
+}
+
+
+/* Mobile Responsive Styles */
+@media screen and (max-width: 768px) {
+    .inquiry-container {
+        padding: 15px;
+        margin: 10px;
+    }
+
+    table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    th, td {
+        padding: 8px;
+        font-size: 14px;
+        min-width: 120px; /* Ensures readable column width on mobile */
+    }
+
+    .read-button {
+        width: 100%;
+        margin: 10px 0;
+        padding: 12px 20px;
+        font-size: 15px;
+    }
+}
+
+/* Small Mobile Devices */
+@media screen and (max-width: 480px) {
+    .inquiry-container {
+        padding: 10px;
+        margin: 5px;
+    }
+
+    th, td {
+        padding: 6px;
+        font-size: 13px;
+    }
+
+    .read-button {
+        padding: 10px 15px;
+        font-size: 14px;
+    }
+}

@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/ownerseekerinquiry.css">
+
 </head>
 
 <body>
@@ -141,7 +143,8 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="/owner/ownerprofile">My Profile</a>
-                        <a class="dropdown-item" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
+                        <a class="dropdown-item"
+                            onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -185,8 +188,8 @@
                             </ul>
                         </li>
                         <li class="active">
-                            <a href="/owner/ownerseekerinquiries"><i class="fas fa-chalkboard-teacher"></i> <span> Seeker Inquiry</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/owner/ownerseekerinquiries"><i class="fas fa-chalkboard-teacher"></i> <span>
+                                    Seeker Inquiry</span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -195,8 +198,8 @@
                         </li>
 
                         <li class="">
-                            <a href="/owner/owneranalytics"><i class="fas fa-chalkboard-teacher"></i> <span> Property Analytics</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/owner/owneranalytics"><i class="fas fa-chalkboard-teacher"></i> <span> Property
+                                    Analytics</span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -205,8 +208,8 @@
                         </li>
 
                         <li class="">
-                            <a href="/owner/owneraddcomplaints"><i class="fas fa-chalkboard-teacher"></i> <span> Add Complaints</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/owner/owneraddcomplaints"><i class="fas fa-chalkboard-teacher"></i> <span> Add
+                                    Complaints</span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -260,7 +263,8 @@
                                 <!-- You can keep it hidden so it won't affect the UI -->
                                 <button type="submit" style="display: none;">Logout</button>
                             </form>
-                            <a href="#" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
+                            <a href="#"
+                                onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
                                     class="fas fa-shield-alt"></i> <span> Logout </span> <span
                                     class="menu-arrow"></span></a>
                         </li>
@@ -280,12 +284,55 @@
                         </div>
                     </div>
                 </div>
-                
-                {{!-- <div class="row">
-                    Hello
-                </div> --}}
+
+                <div class="row">
+                    <div class="inquiry-container">
+                        <h1>Inquiry Page</h1>
+
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Email</th>
+                                    <th>Message Description</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inquiryTable">
+                                <tr>
+                                    <td>
+                                        preeti@gmail.com
+
+                                    </td>
+                                    <td>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam repellendus
+                                        hic itaque unde vitae doloremque, cupiditate, nulla, ab ex voluptas praesentium
+                                        quidem assumenda impedit necessitatibus nihil labore. Ratione, accusantium in?
+                                    </td>
+                                    <td>
+                                        <button class="read-button"> Read</button>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        preeti@gmail.com
+
+                                    </td>
+                                    <td>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam repellendus
+                                        hic itaque unde vitae doloremque, cupiditate, nulla, ab ex voluptas praesentium
+                                        quidem assumenda impedit necessitatibus nihil labore. Ratione, accusantium in?
+                                    </td>
+                                    <td>
+                                        <button class="read-button"> Read</button>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
+    </div>
     </div>
 
 
