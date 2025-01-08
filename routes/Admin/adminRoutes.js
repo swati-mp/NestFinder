@@ -32,8 +32,9 @@ const {getOwnerComplaint,postOwnerComplaint}=require("../../controllers/Admin/ow
 router.get("/ownercomplaint",adminAuth,getOwnerComplaint)
 router.post("/readownercomplaint",adminAuth,postOwnerComplaint)
 
-const {getSeekerComplaint}=require("../../controllers/Admin/seekercomplaintController")
+const {getSeekerComplaint,postSeekerComplaint}=require("../../controllers/Admin/seekercomplaintController")
 router.get("/seekercomplaint",adminAuth,getSeekerComplaint)
+router.post("/readseekercomplaint",adminAuth,postSeekerComplaint)
 
 const {getBlockOwner}=require("../../controllers/Admin/blockownerController")
 router.get("/blockowner",adminAuth,getBlockOwner)
