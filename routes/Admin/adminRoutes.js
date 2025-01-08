@@ -28,8 +28,9 @@ router.get("/adminproperties",adminAuth,getProperties)
 const {getApproveProperties}=require("../../controllers/Admin/approvepropertiesController")
 router.get("/approveproperties",adminAuth,getApproveProperties)
 
-const {getOwnerComplaint}=require("../../controllers/Admin/ownercomplaintController")
+const {getOwnerComplaint,postOwnerComplaint}=require("../../controllers/Admin/ownercomplaintController")
 router.get("/ownercomplaint",adminAuth,getOwnerComplaint)
+router.post("/readownercomplaint",adminAuth,postOwnerComplaint)
 
 const {getSeekerComplaint}=require("../../controllers/Admin/seekercomplaintController")
 router.get("/seekercomplaint",adminAuth,getSeekerComplaint)

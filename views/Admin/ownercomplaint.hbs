@@ -274,15 +274,20 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each list}}
                             <tr>
-                                <td>1</td>
-                                <td>johndoe@example.com</td>
-                                <td>ABC</td>
-                                <td>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ea maxime dolor voluptates
-                                    ut libero? Ipsam velit, debitis maiores cum expedita optio impedit consequuntur eos,
-                                    quibusdam placeat distinctio excepturi similique totam.</td>
-                                <td><button class="read-btn">Read</button></td>
+                                <td>{{this.ownerid}}</td>
+                                <td>{{this.email}}</td>
+                                <td>{{this.complaint_title}}</td>
+                                <td>{{this.complaint_details}}</td>
+                                <td>
+                                    <form action="/admin/readownercomplaint" method="post">
+                                        <input type="hidden" name="complaintid" value="{{this.complaintid}}">
+                                        <button type="submit" class="read-btn">Read</button>
+                                    </form>
+                                </td>
                             </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>
