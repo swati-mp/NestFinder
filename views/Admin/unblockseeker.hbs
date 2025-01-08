@@ -13,6 +13,8 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/adminownerseekertable.css">
+
 </head>
 
 <body>
@@ -261,9 +263,34 @@
                     </div>
                 </div>
                 
-                {{!-- <div class="row">
-                    Hello
-                </div> --}}
+                <div class="row">
+                    <table class="profile-table">
+                        <thead>
+                            <tr>
+                                <th>Seeker Id</th>
+                                <th>Profile Picture</th>
+                                <th>First Name</th>
+                                <th>Last Name</th>
+                                <th>Email</th>
+                                <th>Phone Number</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>
+                                    <img src="/assets/img/logo-small.png" alt="Profile Picture" class="profile-image">
+                                </td>
+                                <td>John</td>
+                                <td>Doe</td>
+                                <td>johndoe@example.com</td>
+                                <td>+1234567890</td>
+                                <td><button class="read-btn">UnBlock</button></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </div>
