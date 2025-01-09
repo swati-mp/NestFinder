@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/ownerprofile.css">
 </head>
 
 <body>
@@ -175,9 +176,9 @@
                                 <li><a href="student-dashboard.html">Student Dashboard</a></li>
                             </ul> --}}
                         </li>
-                         <li class="">
-                            <a href="/seeker/submittedinquries"><i class="fas fa-building"></i> <span> Submitted Inquiries</span> <span
-                                    class="menu-arrow"></span></a>
+                        <li class="">
+                            <a href="/seeker/submittedinquries"><i class="fas fa-building"></i> <span> Submitted
+                                    Inquiries</span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="/admin/adminproperties">Live Properties</a></li>
                                 <li><a href="/admin/approveproperties">Approve/Reject Properties</a></li>
@@ -185,18 +186,9 @@
                                 <li><a href="edit-student.html">Student Edit</a></li>
                             </ul> --}}
                         </li>
-                       <li class="">
-                            <a href="/seeker/seekerhistory"><i class="fas fa-chalkboard-teacher"></i> <span> History </span> <span
-                                    class="menu-arrow"></span></a>
-                            {{!-- <ul>
-                                <li><a href="teachers.html">Admins</a></li>
-                                <li><a href="/admin/ownerdata">Owners</a></li>
-                                <li><a href="/admin/seekerdata">Seekers</a></li>
-                            </ul> --}}
-                        </li>
-                         <li class="">
-                            <a href="/seeker/seekerwishlist"><i class="fas fa-chalkboard-teacher"></i> <span> Wishlist </span> <span
-                                    class="menu-arrow"></span></a>
+                        <li class="">
+                            <a href="/seeker/seekerhistory"><i class="fas fa-chalkboard-teacher"></i> <span> History
+                                </span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -204,15 +196,24 @@
                             </ul> --}}
                         </li>
                         <li class="">
-                            <a href="/seeker/seekercomplaint"><i class="fas fa-chalkboard-teacher"></i> <span> Add Complaint </span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/seeker/seekerwishlist"><i class="fas fa-chalkboard-teacher"></i> <span> Wishlist
+                                </span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
                                 <li><a href="/admin/seekerdata">Seekers</a></li>
                             </ul> --}}
                         </li>
-  
+                        <li class="">
+                            <a href="/seeker/seekercomplaint"><i class="fas fa-chalkboard-teacher"></i> <span> Add
+                                    Complaint </span> <span class="menu-arrow"></span></a>
+                            {{!-- <ul>
+                                <li><a href="teachers.html">Admins</a></li>
+                                <li><a href="/admin/ownerdata">Owners</a></li>
+                                <li><a href="/admin/seekerdata">Seekers</a></li>
+                            </ul> --}}
+                        </li>
+
 
                         <li class="menu-title">
                             <span>Logout</span>
@@ -243,7 +244,39 @@
                         </div>
                     </div>
                 </div>
-        
+                <div class="row">
+                    <div class="profile-container">
+                        <div class="profile-picture">
+                            <img src="/assets/img/logo-small.png" alt="Profile Picture">
+                        </div>
+                        <div class=""></div>
+                        <div class="profile-field">
+                            <span>First Name</span>
+                            <input type="text" placeholder="Enter First Name">
+                        </div>
+                        <div class="profile-field">
+                            <span>Last Name</span>
+                            <input type="text" placeholder="Enter Last Name">
+                        </div>
+                        <div class="profile-field">
+                            <span>Email</span>
+                            <input type="email" placeholder="Enter Email">
+                        </div>
+                        <div class="profile-field">
+                            <span>Phone Number</span>
+                            <input type="tel" placeholder="Enter Phone Number">
+                        </div>
+                        <div class="profile-field">
+                            <span>Password</span>
+                            <input type="password" placeholder="Enter Password">
+                        </div>
+                        <div class="profile-field">
+                            <span>Upload Profile-image</span>
+                            <input type="file">
+                        </div>
+                        <a href="#" class="update-button">Update Profile</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
