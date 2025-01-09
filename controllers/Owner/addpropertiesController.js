@@ -4,8 +4,9 @@ const fs = require("fs");
 const { Property } = require("../../model/Owner/PropertySchema");
 
 const getAddProperty=(req,res)=>{
-    res.render("owneraddproperties")
-
+    res.render("owneraddproperties",{
+        email:req.cookies.email
+    })
 }
 
 const storage = multer.diskStorage({
