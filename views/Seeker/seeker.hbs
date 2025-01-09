@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/seeker.css">
+    <link rel="stylesheet" href="/adminproperties.css">
 </head>
 
 <body>
@@ -177,8 +178,8 @@
                             </ul> --}}
                         </li>
                         <li class="">
-                            <a href="/seeker/submittedinquries"><i class="fas fa-building"></i> <span> Submitted Inquiries</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/seeker/submittedinquries"><i class="fas fa-building"></i> <span> Submitted
+                                    Inquiries</span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="/admin/adminproperties">Live Properties</a></li>
                                 <li><a href="/admin/approveproperties">Approve/Reject Properties</a></li>
@@ -186,9 +187,9 @@
                                 <li><a href="edit-student.html">Student Edit</a></li>
                             </ul> --}}
                         </li>
-                       <li class="">
-                            <a href="/seeker/seekerhistory"><i class="fas fa-chalkboard-teacher"></i> <span> History </span> <span
-                                    class="menu-arrow"></span></a>
+                        <li class="">
+                            <a href="/seeker/seekerhistory"><i class="fas fa-chalkboard-teacher"></i> <span> History
+                                </span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -196,8 +197,8 @@
                             </ul> --}}
                         </li>
                         <li class="">
-                            <a href="/seeker/seekerwishlist"><i class="fas fa-chalkboard-teacher"></i> <span> Wishlist </span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/seeker/seekerwishlist"><i class="fas fa-chalkboard-teacher"></i> <span> Wishlist
+                                </span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -205,8 +206,8 @@
                             </ul> --}}
                         </li>
                         <li class="">
-                            <a href="/seeker/seekercomplaint"><i class="fas fa-chalkboard-teacher"></i> <span> Add Complaint </span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/seeker/seekercomplaint"><i class="fas fa-chalkboard-teacher"></i> <span> Add
+                                    Complaint </span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -214,42 +215,6 @@
                             </ul> --}}
                         </li>
 
-                        <li class="menu-title">
-                            <span>Management</span>
-                        </li>
-                        {{!-- <li class="submenu">
-                            <a href="#"><i class="fas fa-building"></i> <span> Gallary of Properties </span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="departments.html">Department List</a></li>
-                                <li><a href="add-department.html">Department Add</a></li>
-                                <li><a href="edit-department.html">Department Edit</a></li>
-                            </ul>
-                        </li> --}}
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-exclamation-circle"></i> <span> User Complaints</span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="/admin/ownercomplaint">Owners</a></li>
-                                <li><a href="/admin/seekercomplaint">Seekers</a></li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-ban"></i> <span> Block Users</span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="/admin/blockowner">Owners</a></li>
-                                <li><a href="/admin/blockseeker">Seekers</a></li>
-                            </ul>
-                        </li>
-                        <li class="submenu">
-                            <a href="#"><i class="fas fa-unlock"></i> <span> UnBlock Users</span> <span
-                                    class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="/admin/unblockowner">Owners</a></li>
-                                <li><a href="/admin/unblockseeker">Seekers</a></li>
-                            </ul>
-                        </li>
 
                         <li class="menu-title">
                             <span>Logout</span>
@@ -280,6 +245,27 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="search-section">
+                            <div class="search-box">
+                                <div class="searchtext">
+                                    <label for="">Search_By</label>
+                                </div>
+                                <select class="search-dropdown">
+                                    <option value="all">Select</option>
+                                    <option value="house">City</option>
+                                    <option value="apartment">No. of Rooms</option>
+                                    <option value="villa">Rent</option>
+                                </select>
+                                <input type="text" id="search" class="search-input" placeholder="Search properties...">
+                                <button class="search-btn">Search</button>
+                            </div>
+                        </div>
+                    </div>
+                </div><br>
+
                 <div class="row">
                     <main class="properties-section">
                         <!-- Property cards will be dynamically inserted here -->
