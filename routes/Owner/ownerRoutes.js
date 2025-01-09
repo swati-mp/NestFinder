@@ -17,8 +17,9 @@ router.get("/",ownerAuth,getOwner)
 const {getOwnerProfile}=require("../../controllers/Owner/ownerprofileController")
 router.get("/ownerprofile",getOwnerProfile)
 
-const {getAddProperty}=require("../../controllers/Owner/addpropertiesController")
+const {getAddProperty,postAddProperties,upload}=require("../../controllers/Owner/addpropertiesController")
 router.get("/owneraddproperties",getAddProperty)
+router.post("/owneraddproperties",upload.array("images"),postAddProperties)
 
 const {getMyProperty}=require("../../controllers/Owner/mypropertiesController")
 router.get("/ownermyproperties",getMyProperty)
