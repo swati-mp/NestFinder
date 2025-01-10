@@ -14,85 +14,8 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/seeker.css">
-    <style>
-
-        .complaint-form {
-            width: 100%;
-            margin: 2rem auto;
-            padding: 2rem;
-            background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
-        }
-
-        /* Label styling */
-        .complaint-form label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: #2c3e50;
-            font-weight: 500;
-            font-size: 1.1rem;
-        }
-
-        /* Input and textarea styling */
-        .complaint-form input[type="text"],
-        .complaint-form textarea {
-            width: 100%;
-            padding: 0.8rem;
-            margin-bottom: 1.5rem;
-            border: 2px solid #000000;
-            border-radius: 6px;
-            font-size: 1rem;
-            transition: all 0.3s ease;
-            background-color: #ffffff;
-        }
-
-        .complaint-form input[type="text"]:focus,
-        .complaint-form textarea:focus {
-            outline: none;
-            border-color: #4299e1;
-            box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
-        }
-
-        /* Placeholder styling */
-        .complaint-form input::placeholder,
-        .complaint-form textarea::placeholder {
-            color: #a0aec0;
-        }
-
-        /* Submit button styling */
-        .complaint-form button[type="submit"] {
-            display: block;
-            width: 100%;
-            padding: 1rem;
-            background-color: #4299e1;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            font-size: 1.1rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-
-        .complaint-form button[type="submit"]:hover {
-            background-color: #3182ce;
-            transform: translateY(-1px);
-        }
-
-        .complaint-form button[type="submit"]:active {
-            transform: translateY(1px);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 640px) {
-            .complaint-form {
-                margin: 1rem;
-                padding: 1.5rem;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/ownerseekerinquiry.css">
+   
 </head>
 
 <body>
@@ -256,8 +179,7 @@
                             </ul> --}}
                         </li>
                         <li class="active">
-                            <a href="/seeker/submittedinquries"><i class="fas fa-building"></i> <span> Submitted Inquiries</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/seeker/seekerinquiryresponse"><i class="fas fa-building"></i> <span> Inquiry Response </span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="/admin/adminproperties">Live Properties</a></li>
                                 <li><a href="/admin/approveproperties">Approve/Reject Properties</a></li>
@@ -317,7 +239,7 @@
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">Submitted Inquries</h3>
+                            <h3 class="page-title">Inquiry Response</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item active" style="color: black;">Dashboard</li>
                             </ul>
@@ -325,18 +247,40 @@
                     </div>
                 </div>
                 <div class="row">
-                    <form class="complaint-form">
-                            <label for="complaintTitle">Email:</label>
-                            <input type="text" id="complaintTitle" name="email"
-                                placeholder="Enter complaint title" value="{{email}}" required readonly >
+                    <div class="inquiry-container">
+                        <h1>Inquiry Page</h1>
 
-                            <label for="complaintDetails">Inquiry Details:</label>
-                            <textarea id="complaintDetails" name="inquiryDetails" placeholder="Describe your issue"
-                                rows="5" required></textarea>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Owner Email</th>
+                                    <th>Message Sent by Me</th>
+                                    <th>Response</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody id="inquiryTable">
+                                <tr>
+                                    <td>
+                                        preeti@gmail.com
 
-                            <button type="submit">Submit Complaint</button>
-                        </form>
-
+                                    </td>
+                                    <td>
+                                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quibusdam repellendus
+                                        hic itaque unde vitae doloremque, cupiditate, nulla, ab ex voluptas praesentium
+                                        quidem assumenda impedit necessitatibus nihil labore. Ratione, accusantium in?
+                                    </td>
+                                    <td>
+                                        Response
+                                    </td>
+                                    <td>
+                                        <button class="read-button"> Read</button>
+                                    </td>
+                                </tr>
+                                
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
         </div>

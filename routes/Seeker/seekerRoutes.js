@@ -17,8 +17,8 @@ router.get("/",seekerAuth,getSeeker)
 const {getSeekerProfile} = require("../../controllers/Seeker/seekerprofileController")
 router.get("/seekerprofile",getSeekerProfile)
 
-const {getSubmittedInquries} = require("../../controllers/Seeker/submittedinquriesController")
-router.get("/submittedinquries",getSubmittedInquries)
+const {getInquriesResponse} = require("../../controllers/Seeker/InquriesResponseController")
+router.get("/seekerinquiryresponse",getInquriesResponse)
 
 const {getHistory} = require("../../controllers/Seeker/seekerhistoryController")
 router.get("/seekerhistory",getHistory)
