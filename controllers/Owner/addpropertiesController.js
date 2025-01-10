@@ -37,7 +37,6 @@ const postAddProperties=async(req,res)=>{
 
         // Create property object
         const property = new Property({
-            propertyId: body.propertyId,
             title: body.title,
             description: body.description,
             rent: body.rent,
@@ -63,7 +62,10 @@ const postAddProperties=async(req,res)=>{
 
         // Save property to database
         await property.save();
-        res.status(201).send("Property added successfully!");
+        res.render("owneraddproperties",{
+            email:req.cookies.email,
+            success: "Property added successfully!",   
+        })
     } catch (error) {
         console.log(error)
     }

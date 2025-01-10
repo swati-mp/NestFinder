@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const PropertySchema = new mongoose.Schema({
-    propertyId: { type: String, required: true },
+    propertyId: { type: String},
     title: { type: String, required: true },
     description: { type: String, required: true },
     rent: { type: Number, required: true },
@@ -24,6 +24,13 @@ const PropertySchema = new mongoose.Schema({
     datePosted: { type: Date, required: true },
     status: { type: String, enum: ["Available", "Unavailable"], required: true },
 });
+
+PropertySchema.pre("save", function (next) {
+    if (!this.propertyId) {
+        this.propertyId = Math.floor(Date.now() / 1000)+99999;  // Using Unix timestamp for unique ID
+    }
+    next();
+})   
 
 const Property = mongoose.model("Property", PropertySchema);
 

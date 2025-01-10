@@ -60,6 +60,14 @@ input[type="file"] {
     background: #f9fafb;
 }
 
+.serverresponse{
+    width: 100%;
+    background-color: aquamarine;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+}
+
 @media (max-width: 640px) {
     form {
         padding: 1rem;
