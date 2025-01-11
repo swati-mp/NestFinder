@@ -12,7 +12,7 @@ const ownerSchema=mongoose.Schema({
 
 ownerSchema.pre('save', function(next) {
     if (!this.ownerid) {
-        this.ownerid = Math.floor(Date.now() / 1000);  // Using Unix timestamp for unique ID
+        this.ownerid = Math.floor(Date.now());  // Using Unix timestamp for unique ID
     }
     next();
 });

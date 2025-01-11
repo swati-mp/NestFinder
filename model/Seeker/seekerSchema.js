@@ -12,7 +12,7 @@ const seekerSchema=mongoose.Schema({
 
 seekerSchema.pre('save',function(next){
     if (!this.seekerid) {
-        this.seekerid = Math.floor(Date.now() / 1000);  // Using Unix timestamp for unique ID
+        this.seekerid = Math.floor(Date.now());  // Using Unix timestamp for unique ID
     }
     next();
 })

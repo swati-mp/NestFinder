@@ -1,4 +1,5 @@
 const mongoose = require("mongoose");
+const { v4: uuidv4 } = require('uuid');
 
 const PropertySchema = new mongoose.Schema({
     propertyId: { type: String},
@@ -23,11 +24,12 @@ const PropertySchema = new mongoose.Schema({
     },
     datePosted: { type: Date, required: true },
     status: { type: String, enum: ["Available", "Unavailable"], required: true },
+    approved: { type: Boolean, default: false }
 });
 
 PropertySchema.pre("save", function (next) {
     if (!this.propertyId) {
-        this.propertyId = Math.floor(Date.now() / 1000)+99999;  // Using Unix timestamp for unique ID
+        this.propertyId = uuidv4().toString();  // Using Unix timestamp for unique ID
     }
     next();
 })   

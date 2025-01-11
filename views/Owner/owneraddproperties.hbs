@@ -347,17 +347,17 @@
                         </div>
 
                         <label for="images">Property Images</label>
-                        <input type="file" id="images" name="images" multiple />
+                        <input type="file" id="images" name="images" multiple required />
 
                         <label for="mapLocation">Map Location(Stand in the Location then click on Fetch)</label>
                         <div class="form-group">
                             <div>
                                 <input type="number" step="any" id="latitude" name="latitude" placeholder="Latitude"
-                                    style="background-color: rgb(103, 220, 222);" required readonly />
+                                    style="background-color: rgb(103, 220, 222);"  readonly required/>
                             </div>
                             <div>
                                 <input type="number" step="any" id="longitude" name="longitude" placeholder="Longitude"
-                                    style="background-color: rgb(103, 220, 222);" required readonly />
+                                    style="background-color: rgb(103, 220, 222);"  readonly required/>
                             </div>
                             <div>
                                 <button type="button" id="fetchlocation">Fetch Location</button>

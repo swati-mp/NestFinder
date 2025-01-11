@@ -25,8 +25,11 @@ router.get("/adminprofile",adminAuth,getAdminProfile)
 const {getProperties}=require("../../controllers/Admin/propertiesController")
 router.get("/adminproperties",adminAuth,getProperties)
 
-const {getApproveProperties}=require("../../controllers/Admin/approvepropertiesController")
+const {getApproveProperties,getViewImages,postApproveProperties,postRejectProperties}=require("../../controllers/Admin/approvepropertiesController")
 router.get("/approveproperties",adminAuth,getApproveProperties)
+router.get("/viewImages/:propertyId",adminAuth,getViewImages)
+router.post("/approveproperties",adminAuth,postApproveProperties)
+router.post("/rejectproperties",adminAuth,postRejectProperties)
 
 const {getOwnerComplaint,postOwnerComplaint}=require("../../controllers/Admin/ownercomplaintController")
 router.get("/ownercomplaint",adminAuth,getOwnerComplaint)

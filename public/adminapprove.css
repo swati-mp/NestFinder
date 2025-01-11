@@ -62,11 +62,15 @@ td:nth-last-child(2)[innerHTML*="Available"] {
     margin: 5px;
 }
 
+
 .approve:hover {
     background-color: #357abd;
 }
 
 /* Link styling */
+td{
+    min-width: 10vw;
+}
 tr{
     a {
         color: #4a90e2;

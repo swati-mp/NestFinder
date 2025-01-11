@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/adminapprove.css">
-    
+
 </head>
 
 <body>
@@ -287,57 +287,63 @@
                         </thead>
                         <tbody>
                             <!-- Example Data -->
+                            {{#each properties}}
                             <tr>
-                                <td>123</td>
-                                <td>Beautiful Apartment</td>
-                                <td>Spacious 2BHK with great view</td>
-                                <td>1500</td>
-                                <td>5000</td>
-                                <td>123 Main St, Springfield, IL, 62701</td>
-                                <td>1234567890</td>
-                                <td>owner@example.com</td>
-                                <td>2</td>
-                                <td>2</td>
-                                <td><a href="image1.jpg">View Images</a></td>
-                                <td>Latitude: 40.123, Longitude: -89.123</td>
-                                <td><button class="approve">Click to view</button></td>
-                                <td>2024-12-15</td>
-                                <td>Available</td>
+                                <td>{{this.propertyId}}</td>
+                                <td>{{this.title}}</td>
+                                <td>{{this.description}}</td>
+                                <td>{{this.rent}}</td>
+                                <td>{{this.deposit}}</td>
+                                <td>{{this.address.street}}, {{this.address.city}}, {{this.address.state}},
+                                    {{this.address.zipcode}}</td>
+                                <td>{{this.ownerPhone}}</td>
+                                <td>{{this.ownerEmail}}</td>
+                                <td>{{this.bedrooms}}</td>
+                                <td>{{this.bathrooms}}</td>
                                 <td>
-                                    <button class="approve">Approve</button>
-                                    <button class="approve" style="background-color: red;">Reject</button>
+                                    <a href="/admin/viewImages/{{this.propertyId}}">View Images</a>
+                                </td>
+                                <td>Latitude: {{this.mapLocation.latitude}}, Longitude: {{this.mapLocation.longitude}}
+                                </td>
+                                <td>
+                                    {{!-- <button href="" class="approve">Click to view</button> --}}
+                                    <a href="https://www.google.com/maps?q={{this.mapLocation.latitude}},{{this.mapLocation.longitude}}"
+                                        class="approve">Click to view</a>
+                                </td>
+                                <td>{{this.datePosted}}</td>
+                                <td>{{this.status}}</td>
+                                <td>
+                                    <form action="/admin/approveproperties" method="post"
+                                        onsubmit="return confirm('Are you sure you want to approve this property?')">
+                                        <input type="hidden" name="propertyId" value="{{this.propertyId}}">
+                                        <input type="hidden" name="email" value="{{this.ownerEmail}}">
+                                        <button type="submit" class="approve">Approve</button>
+                                    </form>
+                                    <form action="/admin/rejectproperties" method="post"
+                                        onsubmit="return confirmReject();">
+                                        <input type="hidden" name="propertyId" value="{{this.propertyId}}">
+                                        <input type="hidden" name="email" value="{{this.ownerEmail}}">
+                                        <input type="hidden" name="rejectReason" id="rejectReasonInput">
+
+                                        <!-- Reject Button -->
+                                        <button type="submit" class="approve"
+                                            style="background-color: red;">Reject</button>
+                                    </form>
                                 </td>
                             </tr>
-                            <tr>
-                                <td>123</td>
-                                <td>Beautiful Apartment</td>
-                                <td>Spacious 2BHK with great view</td>
-                                <td>1500</td>
-                                <td>5000</td>
-                                <td>123 Main St, Springfield, IL, 62701</td>
-                                <td>1234567890</td>
-                                <td>owner@example.com</td>
-                                <td>2</td>
-                                <td>2</td>
-                                <td><a href="image1.jpg">View Images</a></td>
-                                <td>Latitude: 40.123, Longitude: -89.123</td>
-                                <td><button class="approve">Click to view</button></td>
-                                <td>2024-12-15</td>
-                                <td>Available</td>
-                                <td>
-                                    <button class="approve">Approve</button>
-                                    <button class="approve" style="background-color: red;">Reject</button>
-                                </td>
-                            </tr>
+                            {{/each}}
                             <!-- Add more rows dynamically -->
                         </tbody>
                     </table>
-
                 </div>
             </div>
         </div>
     </div>
-
+    {{#if message}}
+    <script>
+        alert("{{message}}");
+    </script>
+    {{/if}}
 
     <script src="/assets/js/jquery-3.6.0.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
@@ -346,6 +352,17 @@
     <script src="/assets/js/script.js"></script>
 
     <script src="/assets/js/handleheader.js"></script>
+    <script>
+        function confirmReject() {
+            const reason = prompt("Please enter the reason for rejection:");
+            if (!reason) {
+                alert("Rejection reason is required!");
+                return false; // Prevent form submission if no reason provided
+            }
+            document.getElementById('rejectReasonInput').value = reason;
+            return confirm("Are you sure you want to reject this property?");
+        }
+    </script>
 </body>
 
 </html>

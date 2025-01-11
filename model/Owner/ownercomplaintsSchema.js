@@ -10,7 +10,7 @@ const ownercomplaintSchema=mongoose.Schema({
 
 ownercomplaintSchema.pre('save',function(next){
     if(!this.complaintid){
-        this.complaintid=Math.floor(Date.now() / 1000);
+        this.complaintid=Math.floor(Date.now());
     }
     next();
 })

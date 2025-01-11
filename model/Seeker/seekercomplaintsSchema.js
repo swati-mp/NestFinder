@@ -10,7 +10,7 @@ const seekercomplaintSchema=mongoose.Schema({
 
 seekercomplaintSchema.pre('save',function(next){
     if(!this.complaintid){
-        this.complaintid=Math.floor(Date.now() / 1000);
+        this.complaintid=Math.floor(Date.now());
     }
     next();
 })

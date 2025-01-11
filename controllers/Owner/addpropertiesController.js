@@ -32,6 +32,13 @@ const postAddProperties=async(req,res)=>{
     try {
         const { body, files } = req;
 
+        if(!body.latitude || !body.longitude){
+            return res.render("owneraddproperties",{
+                email:req.cookies.email,
+                success:"Please select the location on map."
+            })
+        }
+
         // Store file paths
         const imagePaths = files.map((file) => `/officialimages/${body.ownerEmail}/${file.filename}`);
 
