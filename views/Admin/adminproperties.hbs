@@ -289,7 +289,7 @@
                         <!-- Property cards will be dynamically inserted here -->
                         {{#each approvedproperties}}
                         <div class="property-card">
-                            <img src="/assets/img/admin.webp" alt="Modern Family Home" class="property-image">
+                            <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
                             <div class="property-info">
                                 <div class="property-title">{{this.title}}</div>
                                 <div class="property-details">{{this.bedrooms}} bedrooms • {{this.bathrooms}} bathrooms</div>
