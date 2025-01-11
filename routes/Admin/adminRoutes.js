@@ -22,8 +22,9 @@ router.get("/seekerdata",adminAuth,getSeekerdata)
 const {getAdminProfile}=require("../../controllers/Admin/adminprofileController")
 router.get("/adminprofile",adminAuth,getAdminProfile)
 
-const {getProperties}=require("../../controllers/Admin/propertiesController")
+const {getProperties,getViewDetails}=require("../../controllers/Admin/propertiesController")
 router.get("/adminproperties",adminAuth,getProperties)
+router.get("/viewdetails/:propertyId",adminAuth,getViewDetails)
 
 const {getApproveProperties,getViewImages,postApproveProperties,postRejectProperties}=require("../../controllers/Admin/approvepropertiesController")
 router.get("/approveproperties",adminAuth,getApproveProperties)
