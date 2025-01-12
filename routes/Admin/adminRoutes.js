@@ -44,8 +44,9 @@ const {getBlockOwner,postBlockOwner}=require("../../controllers/Admin/blockowner
 router.get("/blockowner",adminAuth,getBlockOwner)
 router.post("/blockowner",adminAuth,postBlockOwner)
 
-const {getBlockSeeker}=require("../../controllers/Admin/blockseekerController")
+const {getBlockSeeker,postBlockSeeker}=require("../../controllers/Admin/blockseekerController")
 router.get("/blockseeker",adminAuth,getBlockSeeker)
+router.post("/blockseeker",adminAuth,postBlockSeeker)
 
 const {getUnblockOwner}=require("../../controllers/Admin/unblockownerController")
 router.get("/unblockowner",adminAuth,getUnblockOwner)

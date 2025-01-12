@@ -7,7 +7,8 @@ const seekerSchema=mongoose.Schema({
     email:{type:String,unique:true},
     phonenumber:{type:String},
     password:{type:String},
-    profilepicture:{type:String}
+    profilepicture:{type:String},
+    blocked:{type:Boolean,default:false}
 })
 
 seekerSchema.pre('save',function(next){

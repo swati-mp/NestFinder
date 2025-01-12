@@ -276,17 +276,29 @@
                             </tr>
                         </thead>
                         <tbody>
+                            {{#each seekerlist}}
                             <tr>
-                                <td>1</td>
+                                <td>{{this.seekerid}}</td>
                                 <td>
-                                    <img src="/assets/img/logo-small.png" alt="Profile Picture" class="profile-image">
+                                    {{#if this.profilepicture}}
+                                        <img src="/officialimages/{{this.email}}/{{this.profilepicture}}" alt="Profile Picture" class="profile-image">
+                                    {{else}}
+                                        <img src="/assets/img/7.jpg" alt="Profile Picture" class="profile-image">
+                                    {{/if}}
                                 </td>
-                                <td>John</td>
-                                <td>Doe</td>
-                                <td>johndoe@example.com</td>
-                                <td>+1234567890</td>
-                                <td><button class="read-btn">Block</button></td>
+                                <td>{{this.name}}</td>
+                                <td>{{this.lastname}}</td>
+                                <td>{{this.email}}</td>
+                                <td>{{this.phonenumber}}</td>
+                                <td>
+                                    <form action="/admin/blockseeker" method="post" onsubmit="return confirm('Are you sure you want to block this seeker?')">
+                                        <input type="hidden" name="seekerid" value="{{this.seekerid}}">
+                                        <input type="hidden" name="email" value="{{this.email}}">
+                                        <button class="read-btn">Block</button>
+                                    </form>
+                                </td>
                             </tr>
+                            {{/each}}
                         </tbody>
                     </table>
                 </div>

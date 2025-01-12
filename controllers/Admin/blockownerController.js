@@ -13,7 +13,7 @@ const postBlockOwner=async(req,res)=>{
     try {
         // console.log(req.body)
         const {ownerid,email}=req.body;
-        const updatedowner=await owners.updateOne(
+        const updatedseeker=await owners.updateOne(
             {ownerid:ownerid,email:email},
             {
                 $set:{
@@ -21,9 +21,10 @@ const postBlockOwner=async(req,res)=>{
                 }
             }
         )
-        if(updatedowner){
-            res.redirect("/admin/blockowner")
+        if(updatedseeker.modifiedCount>0){
+            return res.redirect("/admin/blockowner")
         }
+        res.send("Failed to block the owner")
     } catch (error) {
         console.log(error)
     }
