@@ -265,40 +265,53 @@
                     <br>
                     <div class="row">
                         <div class="col-sm-12">
-                            <div class="search-section">
-                                <div class="search-box">
-                                    <div class="searchtext">
-                                        <label for="">Search_By</label>
+                            <form action="/admin/searchproperties" method="post">
+                                <div class="search-section">
+                                    <div class="search-box">
+                                        <div class="searchtext">
+                                            <label for="">Search_By</label>
+                                        </div>
+                                        <select class="search-dropdown" name="criteria">
+                                            <option value="">Select</option>
+                                            <option value="city">City</option>
+                                            <option value="rooms">Number of Bedrooms(BHK)</option>
+                                            <option value="rent">Max-Rent</option>
+                                            <option value="owneremail">Owner Email</option>
+                                        </select>
+                                        <input type="text" id="search" class="search-input" name="searchvalue"
+                                            placeholder="Search properties...">
+                                        <button class="search-btn">Search</button>
+                                        <a href="/admin/adminproperties" class="search-btn">Reset</a>
                                     </div>
-                                    <select class="search-dropdown">
-                                        <option value="all">Select</option>
-                                        <option value="house">City</option>
-                                        <option value="apartment">No. of Rooms</option>
-                                        <option value="villa">Rent</option>
-                                    </select>
-                                    <input type="text" id="search" class="search-input"
-                                        placeholder="Search properties...">
-                                    <button class="search-btn">Search</button>
                                 </div>
-                            </div>
+                            </form>
                         </div>
                     </div>
                 </div>
                 <div class="row">
                     <main class="properties-section">
                         <!-- Property cards will be dynamically inserted here -->
-                        {{#each approvedproperties}}
-                        <div class="property-card">
-                            <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
-                            <div class="property-info">
-                                <div class="property-title">{{this.title}}</div>
-                                <div class="property-details">{{this.bedrooms}} bedrooms • {{this.bathrooms}} bathrooms</div>
-                                <div class="property-title">Rent:{{this.rent}}</div>
-                                <div class="property-title">Deposit:{{this.deposit}}</div>
-                                <button class="property-btn" onclick="window.location.href='/admin/viewdetails/{{this.propertyId}}'">View Details</button>
+                        {{#if approvedproperties}}
+                            {{#each approvedproperties}}
+                            <div class="property-card">
+                                <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
+                                <div class="property-info">
+                                    <div class="property-title">{{this.title}}</div>
+                                    <div class="property-details">{{this.bedrooms}} bedrooms • {{this.bathrooms}} bathrooms
+                                    </div>
+                                    <div class="property-title">Rent:{{this.rent}}</div>
+                                    <div class="property-title">Deposit:{{this.deposit}}</div>
+                                    <button class="property-btn"
+                                        onclick="window.location.href='/admin/viewdetails/{{this.propertyId}}'">View
+                                        Details</button>
+                                </div>
                             </div>
-                        </div>
-                        {{/each}}
+                            {{/each}}
+                        {{else}}
+                            <div class="no-properties">
+                                <h2>No Properties Found</h2>
+                            </div>
+                        {{/if}}
                     </main>
                 </div>
             </div>
