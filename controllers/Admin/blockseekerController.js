@@ -16,7 +16,7 @@ const postBlockSeeker=async (req,res)=>{
     try {
         const {seekerid,email}=req.body;
         
-        const updatedowner=await seekers.updateOne(
+        const updatedseeker=await seekers.updateOne(
             {seekerid:seekerid,email:email},
             {
                 $set:{
@@ -24,7 +24,7 @@ const postBlockSeeker=async (req,res)=>{
                 }
             }
         )
-        if(updatedowner.modifiedCount>0){
+        if(updatedseeker.modifiedCount>0){
             return res.redirect("/admin/blockseeker")
         }
         res.send("Failed to block the seeker")  

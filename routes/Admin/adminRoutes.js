@@ -52,7 +52,8 @@ const {getUnblockOwner,postUnBlockOwner}=require("../../controllers/Admin/unbloc
 router.get("/unblockowner",adminAuth,getUnblockOwner)
 router.post("/unblockowner",adminAuth,postUnBlockOwner)
 
-const {getUnblockSeeker}=require("../../controllers/Admin/unblockseekerController")
+const {getUnblockSeeker,postUnBlockSeeker}=require("../../controllers/Admin/unblockseekerController")
 router.get("/unblockseeker",adminAuth,getUnblockSeeker)
+router.post("/unblockseeker",adminAuth,postUnBlockSeeker)
 
 module.exports = router
