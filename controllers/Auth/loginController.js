@@ -40,6 +40,13 @@ const postLogin = async (req, res) => {
         // find the email in owners and seekers collection
         const owner = await owners.findOne({ email: email })
         const seeker = await seekers.findOne({ email: email })
+        // console.log(owner)
+        // console.log(seeker)
+        if((owner && owner.blocked) || (seeker && seeker.blocked)){
+            return res.render("login", {
+                success: "You are blocked from this application Contact Admin"
+            });
+        }
 
         // If the email is present in owner collection
         // and the password matches then below if condition will execute
