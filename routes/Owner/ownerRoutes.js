@@ -21,8 +21,9 @@ const {getAddProperty,postAddProperties,upload}=require("../../controllers/Owner
 router.get("/owneraddproperties",getAddProperty)
 router.post("/owneraddproperties",upload.array("images"),postAddProperties)
 
-const {getMyProperty}=require("../../controllers/Owner/mypropertiesController")
+const {getMyProperty,getViewdetails}=require("../../controllers/Owner/mypropertiesController")
 router.get("/ownermyproperties",getMyProperty)
+router.get("/viewdetails/:id",getViewdetails)
 
 const {getOwnerSeekerInquiry}=require("../../controllers/Owner/ownerseekerinquiries")
 router.get("/ownerseekerinquiries",getOwnerSeekerInquiry)

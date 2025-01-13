@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Property Details</title>
+    <style>
+        :root {
+            --primary-color: #4f46e5;
+            --primary-hover: #4338ca;
+            --text-color: #111827;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.1);
+            --text-secondary: #6b7280;
+            --border-color: #e5e7eb;
+            --gradient-start: #4f46e5;
+            --gradient-end: #6366f1;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, sans-serif;
+            background-color: var(--background-color);
+            margin: 0;
+            min-height: 100vh;
+            color: var(--text-color);
+            padding: 1.5rem;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1.5rem;
+            box-shadow: 0 4px 6px var(--shadow-color);
+        }
+
+        h1 {
+            font-size: 2.75rem;
+            font-weight: 800;
+            text-align: center;
+            margin-bottom: 3rem;
+            color: var(--text-color);
+            letter-spacing: -0.025em;
+            position: relative;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        h1::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            margin: 1rem auto 0;
+            border-radius: 2px;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            padding: 0.875rem 1.75rem;
+            background: linear-gradient(to right, var(--gradient-start), var(--gradient-end));
+            color: white;
+            text-decoration: none;
+            border-radius: 1rem;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            margin-bottom: 2rem;
+            box-shadow: 0 4px 6px rgba(79, 70, 229, 0.2);
+        }
+
+        .back-link:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(79, 70, 229, 0.3);
+        }
+
+        .property-details {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 1.5rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease;
+        }
+
+        .property-details:hover {
+            transform: translateY(-5px);
+        }
+
+        .property-title {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin: 0 0 1.5rem 0;
+            color: var(--text-color);
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .property-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.75rem;
+            margin-bottom: 2rem;
+        }
+
+        .info-group {
+            background: var(--background-color);
+            padding: 1.25rem;
+            border-radius: 1rem;
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .info-group:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+
+        .info-label {
+            font-weight: 600;
+            color: var(--primary-color);
+            margin-bottom: 0.75rem;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .info-value {
+            color: var(--text-color);
+            font-size: 1.1rem;
+            font-weight: 500;
+            line-height: 1.6;
+        }
+
+        .description {
+            background: var(--background-color);
+            padding: 2rem;
+            border-radius: 1rem;
+            margin-bottom: 2.5rem;
+            border: 1px solid var(--border-color);
+        }
+
+        .status-badge {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            border-radius: 9999px;
+            font-weight: 600;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .status-available {
+            background: linear-gradient(135deg, #34d399 0%, #059669 100%);
+            color: white;
+        }
+
+        .status-unavailable {
+            background: linear-gradient(135deg, #f87171 0%, #dc2626 100%);
+            color: white;
+        }
+
+        .image-container {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 2rem;
+            padding: 1rem;
+        }
+
+        .image-card {
+            background: var(--card-background);
+            border-radius: 1rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px var(--shadow-color);
+            transition: all 0.3s ease;
+            border: 1px solid var(--border-color);
+        }
+
+        .image-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .image-wrapper {
+            aspect-ratio: 16/9;
+            width: 100%;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .image-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+            display: block;
+        }
+
+        .image-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .info-value a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s ease;
+        }
+
+        .info-value a:hover {
+            color: var(--primary-hover);
+            text-decoration: underline;
+        }
+
+        @media (max-width: 1200px) {
+            .container {
+                padding: 1.5rem;
+            }
+            
+            .property-info {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+
+            .image-container {
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            }
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+
+            .container {
+                padding: 1rem;
+            }
+
+            .property-details {
+                padding: 1.5rem;
+            }
+
+            h1 {
+                font-size: 2rem;
+                margin-bottom: 2rem;
+            }
+
+            .property-title {
+                font-size: 1.5rem;
+            }
+
+            .info-label {
+                font-size: 1rem;
+            }
+
+            .info-value {
+                font-size: 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 0.5rem;
+            }
+
+            .property-info {
+                grid-template-columns: 1fr;
+                gap: 1rem;
+            }
+
+            .property-details {
+                padding: 1rem;
+            }
+
+            .description {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="/owner/ownermyproperties" class="back-link">← Back to Properties</a>
+        <h1>Property Details</h1>
+        
+        <div class="property-details">
+            <h2 class="property-title">Property Title : {{property.title}}</h2>
+            
+            <div class="property-info">
+                <div class="info-group">
+                    <div class="info-label">Property ID</div>
+                    <div class="info-value">{{property.propertyId}}</div>
+                </div>
+                
+                <div class="info-group">
+                    <div class="info-label">Status</div>
+                    <div class="info-value">
+                        <span class="status-badge">
+                            {{property.status}}
+                        </span>
+                    </div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Rent</div>
+                    <div class="info-value">${{property.rent}}/month</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Deposit</div>
+                    <div class="info-value">${{property.deposit}}</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Bedrooms</div>
+                    <div class="info-value">{{property.bedrooms}}</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Bathrooms</div>
+                    <div class="info-value">{{property.bathrooms}}</div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Date Posted</div>
+                    <div class="info-value">{{property.datePosted}}</div>
+                </div>
+            </div>
+
+            <div class="description">
+                <div class="info-label">Description</div>
+                <div class="info-value">{{property.description}}</div>
+            </div>
+
+            <div class="property-info">
+                <div class="info-group">
+                    <div class="info-label">Address</div>
+                    <div class="info-value">
+                        {{property.address.street}}<br>
+                        {{property.address.city}}, {{property.address.state}} {{property.address.zipcode}}
+                    </div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Contact Information</div>
+                    <div class="info-value">
+                        Email: {{property.ownerEmail}}<br>
+                        Phone: {{property.ownerPhone}}
+                    </div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Location</div>
+                    <div class="info-value">
+                        Latitude: {{property.mapLocation.latitude}}<br>
+                        Longitude: {{property.mapLocation.longitude}}
+                    </div>
+                </div>
+
+                <div class="info-group">
+                    <div class="info-label">Map Location</div>
+                    <div class="info-value">
+                        <a href="https://www.google.com/maps/search/{{property.mapLocation.latitude}},{{property.mapLocation.longitude}}" target="_blank">
+                            View on Google Maps →
+                        </a>
+                    </div>
+                </div>
+            </div>  
+        </div>
+
+        <div class="property-details">
+            <h2 class="property-title">Property Images</h2>
+            <div class="image-container">
+                {{#each property.images}}
+                <div class="image-card">
+                    <div class="image-wrapper">
+                        <img src="{{this}}" alt="Property Image">
+                    </div>
+                </div>
+                {{/each}}
+            </div>
+        </div>
+    </div>
+</body>
+</html>

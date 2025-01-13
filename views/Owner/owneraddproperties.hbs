@@ -365,7 +365,7 @@
                         </div>
 
                         <label for="datePosted">Date Posted</label>
-                        <input type="date" id="datePosted" name="datePosted" required />
+                        <input type="date" id="datePosted" name="datePosted" style="background-color: rgb(103, 220, 222);" readonly required />
 
                         <label for="status">Status</label>
                         <select id="status" name="status" required>
@@ -388,6 +388,13 @@
 
     <script src="/assets/js/handleheader.js"></script>
     <script type="module" src="/fetchlocation.js"></script>
+    <script>
+  // Get today's date in the format 'YYYY-MM-DD'
+  const today = new Date().toISOString().split('T')[0];
+  
+  // Set the value of the date input field
+  document.getElementById('datePosted').value = today;
+</script>
 </body>
 
 </html>
