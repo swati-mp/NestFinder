@@ -32,9 +32,9 @@ const postLogin = async (req, res) => {
         // Verify if the user is admin and render him to admin page
         if (email == process.env.Admin_Email && password == process.env.Admin_password) {
             req.app.set("views", path.join(__dirname, "../../views/Admin"));
-            setCookie(email)
-            setToken(process.env.ADMIN_KEY,email)
-            return res.render("admin")
+            await setToken(process.env.ADMIN_KEY, email);
+            setCookie(email);
+            return res.redirect("/admin");
         }
 
         // find the email in owners and seekers collection

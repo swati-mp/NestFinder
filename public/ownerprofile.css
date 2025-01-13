@@ -1,74 +1,178 @@
-.profile-container {
-    background: #fff;
-    border-radius: 15px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    padding: 20px;
+form{
     width: 100%;
+}
+.profile-container {
+    background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+    padding: 2.5rem;
+    width: 100%;
+    /* max-width: 1200px; */
+    margin: 0 auto;
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 20px;
+    gap: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.profile-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(to right, #2575fc, #6a11cb);
 }
 
 .profile-picture {
-    width: 15vw;
+    width: 300px;
+    height: 300px;
     border-radius: 50%;
     overflow: hidden;
     margin: 0 auto;
-    border: 5px solid #2575fc;
-    /* grid-area: 1/1/2/3;/ */
+    border: 4px solid #ffffff;
+    box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.profile-picture:hover {
+    transform: scale(1.02);
 }
 
 .profile-picture img {
     width: 100%;
     height: 100%;
     object-fit: cover;
+    transition: transform 0.3s ease;
 }
 
-.profile-fields {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+.profile-picture img:hover {
+    transform: scale(1.1);
 }
 
 .profile-field {
-    margin: 10px 0;
+    margin: 1rem 0;
 }
 
 .profile-field span {
-    font-weight: bold;
-    color: #333;
+    display: block;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 0.5rem;
+    font-size: 0.95rem;
+    letter-spacing: 0.3px;
 }
 
 .profile-field input {
-    width: calc(100% - 10px);
-    /* min-width: 35vw; */
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e9ecef;
+    border-radius: 10px;
     outline: none;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+    color: #495057;
+    background: #ffffff;
+}
+
+.profile-field input:focus {
+    border-color: #2575fc;
+    box-shadow: 0 0 0 4px rgba(37, 117, 252, 0.1);
+}
+
+.profile-field input[readonly] {
+    background-color: #f8f9fa;
+    border-color: #dee2e6;
+    cursor: not-allowed;
+}
+
+.profile-field input[type="file"] {
+    padding: 0.6rem;
+    border: 2px dashed #dee2e6;
+    background: #f8f9fa;
+    cursor: pointer;
+}
+
+.profile-field input[type="file"]:hover {
+    border-color: #2575fc;
+    background: #f1f4ff;
+}
+
+.address {
+    grid-column: 1 / -1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
 }
 
 .update-button {
-    display: inline-block;
-    margin-top: 20px;
-    padding: 10px 20px;
-    background: #2575fc;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
-    font-weight: bold;
-    transition: background 0.3s ease;
-    width: 150px;
-    white-space: nowrap;
+    grid-column: 1 / -1;
+    justify-self: center;
+    padding: 1rem 2.5rem;
+    background: linear-gradient(45deg, #2575fc, #6a11cb);
+    color: #ffffff;
+    border: none;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    min-width: 180px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(37, 117, 252, 0.2);
 }
 
 .update-button:hover {
-    background: #1a5dc9;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(37, 117, 252, 0.3);
+    background: linear-gradient(45deg, #1a5dc9, #5910a7);
 }
 
-@media only screen and (max-width: 768px)
-{
-    .profile-container{
-        grid-template-columns: 1fr ;
+.update-button:active {
+    transform: translateY(1px);
+}
+
+.serverresponse{
+    width: 100%;
+    /* height: 4vh; */
+    background-color: aquamarine;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+    margin: 10px;
+}
+
+@media only screen and (max-width: 768px) {
+    .profile-container {
+        grid-template-columns: 1fr;
+        padding: 1.5rem;
+    }
+
+    .profile-picture {
+        width: 200px;
+        height: 200px;
+    }
+
+    .address {
+        grid-template-columns: 1fr;
+    }
+
+    .update-button {
+        width: 100%;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .profile-container {
+        padding: 1rem;
+    }
+
+    .profile-picture {
+        width: 150px;
+        height: 150px;
     }
 }

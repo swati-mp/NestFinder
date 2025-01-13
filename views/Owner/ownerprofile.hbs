@@ -285,37 +285,52 @@
                 </div>
 
                 <div class="row">
-                    <div class="profile-container">
-                        <div class="profile-picture">
-                            <img src="/assets/img/logo-small.png" alt="Profile Picture">
+                    <div class="serverresponse">{{success}}</div>
+                    <form action="/owner/ownerprofile" method="post" enctype="multipart/form-data">
+                        <div class="profile-container">
+                            <div class="profile-picture">
+                                {{#if ownerdata.profilepicture}}
+                                <img src="/profileimages/{{ownerdata.email}}/{{ownerdata.profilepicture}}" alt="Profile Picture"
+                                    class="profile-image">
+                                {{else}}
+                                <img src="/assets/img/7.jpg" alt="Profile Picture" class="profile-image">
+                                {{/if}}
+                            </div>
+                            <div class=""></div>
+                            <div class="profile-field">
+                                <span>First Name</span>
+                                <input type="text" placeholder="Enter First Name" name="name" value="{{ownerdata.name}}">
+                            </div>
+                            <div class="profile-field">
+                                <span>Last Name</span> 
+                                <input type="text" placeholder="Enter Last Name" name="lastname" value="{{ownerdata.lastname}}">
+                            </div>
+                            <div class="profile-field">
+                                <span>Email</span>
+                                <input type="email" style="background-color: aqua;" placeholder="Enter Email" name="email" value="{{ownerdata.email}}" readonly>
+                            </div>
+                            <div class="profile-field">
+                                <span>Phone Number</span>
+                                <input type="tel" placeholder="Enter Phone Number" name="phonenumber" value="{{ownerdata.phonenumber}}">
+                            </div>
+                            <div class="profile-field address">
+                                <span>Address</span>
+                                <span></span>
+                                <input type="text" placeholder="Enter Street" name="street" value="{{ownerdata.address.street}}">
+                                <input type="text" placeholder="Enter City" name="city" value="{{ownerdata.address.city}}">
+                                <input type="text" placeholder="Enter State" name="state" value="{{ownerdata.address.state}}">
+                                <input type="text" placeholder="Enter Zipcode" name="zipcode" value="{{ownerdata.address.zipcode}}">
+                            </div>
+                            <div class="profile-field">
+                                <span>Upload Profile-image</span>
+                                <input type="file" name="profilepicture">
+                            </div>
+                            
+                            <div class=""></div>
+                            {{!-- <a href="#" class="update-button">Update Profile</a> --}}
+                            <button type="submit" class="update-button">Update Profile</button>
                         </div>
-                        <div class=""></div>
-                        <div class="profile-field">
-                            <span>First Name</span>
-                            <input type="text" placeholder="Enter First Name">
-                        </div>
-                        <div class="profile-field">
-                            <span>Last Name</span>
-                            <input type="text" placeholder="Enter Last Name">
-                        </div>
-                        <div class="profile-field">
-                            <span>Email</span>
-                            <input type="email" placeholder="Enter Email">
-                        </div>
-                        <div class="profile-field">
-                            <span>Phone Number</span>
-                            <input type="tel" placeholder="Enter Phone Number">
-                        </div>
-                        <div class="profile-field">
-                            <span>Password</span>
-                            <input type="password" placeholder="Enter Password">
-                        </div>
-                        <div class="profile-field">
-                            <span>Upload Profile-image</span>
-                            <input type="file">
-                        </div>
-                        <a href="#" class="update-button">Update Profile</a>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>

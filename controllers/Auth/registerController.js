@@ -31,10 +31,13 @@ const postRegister = async (req, res) => {
 
         if (userRegister) {
             const userFolder = path.join(__dirname, "../../public/officialimages", req.body.email);
-            
+            const profileimageFolder=path.join(__dirname, "../../public/profileimages", req.body.email);
             // Check if the folder already exists
             if (!fs.existsSync(userFolder)) {
                 fs.mkdirSync(userFolder, { recursive: true }); // Create folder recursively
+            }
+            if (!fs.existsSync(profileimageFolder)) {
+                fs.mkdirSync(profileimageFolder, { recursive: true }); // Create folder recursively
             }
             return res.render("register", {
                 success: `🎉 Registration Successful as ${req.body.role === 'owner' ? 'Owner' : 'Seeker'}!`,

@@ -7,6 +7,12 @@ const ownerSchema=mongoose.Schema({
     email:{type:String,unique:true},
     phonenumber:{type:String},
     password:{type:String},
+    address: {
+        street: { type: String },
+        city: { type: String },
+        state: { type: String },
+        zipcode: { type: String },
+    },
     profilepicture:{type:String},
     blocked:{type:Boolean,default:false}
 })
