@@ -18,9 +18,9 @@ const {getOwnerProfile,postOwnerProfile,upload1}=require("../../controllers/Owne
 router.get("/ownerprofile",getOwnerProfile)
 router.post("/ownerprofile",upload1.single('profilepicture'),postOwnerProfile)
 
-const {getAddProperty,postAddProperties,upload}=require("../../controllers/Owner/addpropertiesController")
+const {getAddProperty,postAddProperties,uploadMultiple}=require("../../controllers/Owner/addpropertiesController")
 router.get("/owneraddproperties",getAddProperty)
-router.post("/owneraddproperties",upload.array("images"),postAddProperties)
+router.post("/owneraddproperties",uploadMultiple,postAddProperties)
 
 const {getMyProperty,getViewdetails}=require("../../controllers/Owner/mypropertiesController")
 router.get("/ownermyproperties",getMyProperty)

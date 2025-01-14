@@ -143,7 +143,8 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="/owner/ownerprofile">My Profile</a>
-                        <a class="dropdown-item" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
+                        <a class="dropdown-item"
+                            onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -187,8 +188,8 @@
                             </ul>
                         </li>
                         <li class="">
-                            <a href="/owner/ownerseekerinquiries"><i class="fas fa-chalkboard-teacher"></i> <span> Seeker Inquiry</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/owner/ownerseekerinquiries"><i class="fas fa-chalkboard-teacher"></i> <span>
+                                    Seeker Inquiry</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -197,8 +198,8 @@
                         </li>
 
                         <li class="">
-                            <a href="/owner/owneranalytics"><i class="fas fa-chalkboard-teacher"></i> <span> Property Analytics</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/owner/owneranalytics"><i class="fas fa-chalkboard-teacher"></i> <span> Property
+                                    Analytics</span> <span class="menu-arrow"></span></a>
                             <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -206,9 +207,9 @@
                             </ul>
                         </li>
 
-                         <li class="">
-                            <a href="/owner/owneraddcomplaints"><i class="fas fa-chalkboard-teacher"></i> <span> Add Complaints</span> <span
-                                    class="menu-arrow"></span></a>
+                        <li class="">
+                            <a href="/owner/owneraddcomplaints"><i class="fas fa-chalkboard-teacher"></i> <span> Add
+                                    Complaints</span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -262,7 +263,8 @@
                                 <!-- You can keep it hidden so it won't affect the UI -->
                                 <button type="submit" style="display: none;">Logout</button>
                             </form>
-                            <a href="#" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
+                            <a href="#"
+                                onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
                                     class="fas fa-shield-alt"></i> <span> Logout </span> <span
                                     class="menu-arrow"></span></a>
                         </li>
@@ -275,52 +277,59 @@
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">WELCOME OWNER</h3>
+                            <h3 class="page-title">WELCOME OWNER {{#if notice}}({{notice}}){{/if}}</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item active" style="color: black;">Dashboard</li>
                             </ul>
                         </div>
                     </div>
-                   
+
                 </div>
-                
-                 <div class="row">
-                        <div class="col-sm-12">
-                            <div class="search-section">
-                                <div class="search-box">
-                                    <div class="searchtext">
-                                        <label for="">Search_By</label>
-                                    </div>
-                                    <select class="search-dropdown">
-                                        <option value="all">Select</option>
-                                        <option value="house">City</option>
-                                        <option value="apartment">No. of Rooms</option>
-                                        <option value="villa">Rent</option>
-                                    </select>
-                                    <input type="text" id="search" class="search-input"
-                                        placeholder="Search properties...">
-                                    <button class="search-btn">Search</button>
+
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="search-section">
+                            <div class="search-box">
+                                <div class="searchtext">
+                                    <label for="">Search_By</label>
                                 </div>
+                                <select class="search-dropdown">
+                                    <option value="all">Select</option>
+                                    <option value="house">City</option>
+                                    <option value="apartment">No. of Rooms</option>
+                                    <option value="villa">Rent</option>
+                                </select>
+                                <input type="text" id="search" class="search-input" placeholder="Search properties...">
+                                <button class="search-btn">Search</button>
                             </div>
                         </div>
-                    </div><br>
-                
+                    </div>
+                </div><br>
+
                 <div class="row">
                     <main class="properties-section">
-            <!-- Property cards will be dynamically inserted here -->
-            {{#each liveproperties}}
-            <div class="property-card">
-                <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
-                <div class="property-info">
-                    <div class="property-title">{{this.title}}</div>
-                    <div class="property-details">{{this.bedrooms}} beds • {{this.bathrooms}} baths </div>
-                    <div class="property-title">Deposit:{{this.deposit}} </div>
-                    <div class="property-title">Rent:{{this.rent}} </div>
-                    <button class="property-btn" onclick="window.location.href='/owner/viewdetails/{{this.propertyId}}' ">View Details</button>
-                </div>
-            </div>
-            {{/each}}          
-        </main>
+                        <!-- Property cards will be dynamically inserted here -->
+                        {{#if liveproperties}}
+                            {{#each liveproperties}}
+                            <div class="property-card">
+                                <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
+                                <div class="property-info">
+                                    <div class="property-title">{{this.title}}</div>
+                                    <div class="property-details">{{this.bedrooms}} beds • {{this.bathrooms}} baths </div>
+                                    <div class="property-title">Deposit:{{this.deposit}} </div>
+                                    <div class="property-title">Rent:{{this.rent}} </div>
+                                    <button class="property-btn"
+                                        onclick="window.location.href='/owner/viewdetails/{{this.propertyId}}' ">View
+                                        Details</button>
+                                </div>
+                            </div>
+                            {{/each}}
+                        {{else}}
+                        <div class="property-card">
+                            No properties available
+                        </div>
+                        {{/if}}
+                    </main>
                 </div>
             </div>
         </div>

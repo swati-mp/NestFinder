@@ -7,7 +7,9 @@ const getOwner = async (req, res) => {
 
         if (!owner || !owner.address || !owner.address.city) {
             // console.log("City not found for the owner.");
-            return res.status(404).send("Owner's city not found.");
+            // return res.status(404).send("Owner's city not found.");
+            const allproperties = await Property.find({ status: "Available", approved: true });
+            return res.render("owner", { liveproperties: allproperties,notice:"Update your profile to list properties based on your city" });
         }
 
         const ownerCity = owner.address.city; // Extract the owner's city

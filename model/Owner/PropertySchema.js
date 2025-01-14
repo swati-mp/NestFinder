@@ -18,6 +18,8 @@ const PropertySchema = new mongoose.Schema({
     bedrooms: { type: Number, required: true },
     bathrooms: { type: Number, required: true },
     images: [String], // Array to store image paths
+    govtid: { type: String },          // Added for Government ID file path
+    propertydoc: { type: String },     // Added for Property Document file path
     mapLocation: {
         latitude: { type: Number, required: true },
         longitude: { type: Number, required: true },

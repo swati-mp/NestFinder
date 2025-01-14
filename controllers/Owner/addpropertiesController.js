@@ -28,6 +28,13 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage });
 
+// Handling multiple file uploads
+const uploadMultiple = upload.fields([
+    { name: "images", maxCount: 10 },
+    { name: "govtid", maxCount: 1 },
+    { name: "propertydoc", maxCount: 1 }
+]);
+
 const postAddProperties=async(req,res)=>{
     try {
         const { body, files } = req;
@@ -39,8 +46,10 @@ const postAddProperties=async(req,res)=>{
             })
         }
 
-        // Store file paths
-        const imagePaths = files.map((file) => `/officialimages/${body.ownerEmail}/${file.filename}`);
+        // Separate file paths for documents and images
+        const imagePaths = (files.images || []).map(file => `/officialimages/${body.ownerEmail}/${file.filename}`);
+        const govtidPath = files.govtid ? `/officialimages/${body.ownerEmail}/${files.govtid[0].filename}` : null;
+        const propertydocPath = files.propertydoc ? `/officialimages/${body.ownerEmail}/${files.propertydoc[0].filename}` : null;
 
         // Create property object
         const property = new Property({
@@ -59,6 +68,8 @@ const postAddProperties=async(req,res)=>{
             bedrooms: body.bedrooms,
             bathrooms: body.bathrooms,
             images: imagePaths,
+            govtid: govtidPath,
+            propertydoc: propertydocPath,
             mapLocation: {
                 latitude: body.latitude,
                 longitude: body.longitude,
@@ -81,6 +92,6 @@ const postAddProperties=async(req,res)=>{
 module.exports={
     getAddProperty,
     postAddProperties,
-    upload,
+    uploadMultiple,
 }
 

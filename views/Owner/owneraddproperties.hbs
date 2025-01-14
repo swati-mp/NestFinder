@@ -333,7 +333,7 @@
 
                         <label for="ownerEmail">Owner Email(Your Email)</label>
                         <input type="email" id="ownerEmail" name="ownerEmail" placeholder="Enter owner's email address"
-                           value="{{email}}" style="background-color: rgb(103, 220, 222);" required readonly />
+                            value="{{email}}" style="background-color: rgb(103, 220, 222);" required readonly />
 
                         <div class="form-group">
                             <div>
@@ -353,19 +353,34 @@
                         <div class="form-group">
                             <div>
                                 <input type="number" step="any" id="latitude" name="latitude" placeholder="Latitude"
-                                    style="background-color: rgb(103, 220, 222);"  readonly required/>
+                                    style="background-color: rgb(103, 220, 222);" required />
                             </div>
                             <div>
                                 <input type="number" step="any" id="longitude" name="longitude" placeholder="Longitude"
-                                    style="background-color: rgb(103, 220, 222);"  readonly required/>
+                                    style="background-color: rgb(103, 220, 222);" required />
                             </div>
                             <div>
                                 <button type="button" id="fetchlocation">Fetch Location</button>
                             </div>
                         </div>
 
+                        <label for="mapLocation">Documents for Verification</label>
+                        <div class="form-group">
+                            <div>
+                                <label for="mapLocation">Govt ID: Ex:Adhar Card,Pan or Passport</label>
+                                <input type="file" id="govtid" name="govtid" placeholder="Adhar Card" required />
+                            </div>
+                            <div>
+                                <label for="mapLocation">Property Doc: Ex:Property Tax Receipt,Sale Deed etc</label>
+                                <input type="file" id="propertydoc" name="propertydoc" placeholder="Adhar Card"
+                                    required />
+
+                            </div>
+                        </div>
+
                         <label for="datePosted">Date Posted</label>
-                        <input type="date" id="datePosted" name="datePosted" style="background-color: rgb(103, 220, 222);" readonly required />
+                        <input type="date" id="datePosted" name="datePosted"
+                            style="background-color: rgb(103, 220, 222);" readonly required />
 
                         <label for="status">Status</label>
                         <select id="status" name="status" required>
@@ -389,12 +404,13 @@
     <script src="/assets/js/handleheader.js"></script>
     <script type="module" src="/fetchlocation.js"></script>
     <script>
-  // Get today's date in the format 'YYYY-MM-DD'
-  const today = new Date().toISOString().split('T')[0];
-  
-  // Set the value of the date input field
-  document.getElementById('datePosted').value = today;
-</script>
+        // Get today's date in the format 'YYYY-MM-DD'
+        const today = new Date().toISOString().split('T')[0];
+
+        // Set the value of the date input field
+        document.getElementById('datePosted').value = today;
+
+    </script>
 </body>
 
 </html>
