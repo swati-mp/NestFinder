@@ -280,6 +280,8 @@
                                 <th>Images</th>
                                 <th>Map Location</th>
                                 <th>Google Map</th>
+                                <th>Owner Govt Id</th>
+                                <th>Property Document</th>
                                 <th>Date Posted</th>
                                 <th>Status</th>
                                 <th>Action</th>
@@ -294,7 +296,9 @@
                                 <td>{{this.description}}</td>
                                 <td>{{this.rent}}</td>
                                 <td>{{this.deposit}}</td>
-                                <td>{{this.address.street}}, {{this.address.city}}, {{this.address.state}},
+                                <td>{{this.address.street}}, 
+                                    {{this.address.city}}, 
+                                    {{this.address.state}},
                                     {{this.address.zipcode}}</td>
                                 <td>{{this.ownerPhone}}</td>
                                 <td>{{this.ownerEmail}}</td>
@@ -310,6 +314,8 @@
                                     <a href="https://www.google.com/maps?q={{this.mapLocation.latitude}},{{this.mapLocation.longitude}}"
                                         class="approve">Click to view</a>
                                 </td>
+                                <td><a href="{{this.govtid}}" target="_blank">View Govt Id</a></td>
+                                <td><a href="{{this.propertydoc}}" target="_blank">View Property Document</a></td>
                                 <td>{{this.datePosted}}</td>
                                 <td>{{this.status}}</td>
                                 <td>

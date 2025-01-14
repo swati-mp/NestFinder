@@ -103,7 +103,7 @@ td:nth-child(5) {
 /* Address cell styling */
 td:nth-child(6) {
     max-width: 200px;
-    white-space: nowrap;
+    /* white-space: nowrap; */
     overflow: hidden;
     text-overflow: ellipsis;
 }
