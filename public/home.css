@@ -249,3 +249,80 @@ body {
 .no-properties{
     color: aliceblue;
 }
+
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .header {
+        padding: 10px;
+        height: auto;
+    }
+
+    .nav {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .logo {
+        flex-direction: column;
+        align-items: center;
+        gap: 5px;
+    }
+
+    .nav-links {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+        margin-top: 10px;
+    }
+
+    .nav-links a {
+        font-size: 14px;
+    }
+
+    .search-box {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+
+    .search-btn {
+        font-size: 1rem;
+        padding: 10px;
+    }
+
+    .all-properties {
+        font-size: 1rem;
+        width: auto;
+        padding: 10px;
+        margin: 10px auto;
+    }
+
+    .properties-section {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .property-info {
+        padding: 10px;
+    }
+
+    .property-title {
+        font-size: 16px;
+    }
+
+    .property-details {
+        font-size: 12px;
+    }
+
+    .property-btn {
+        font-size: 12px;
+        padding: 5px;
+    }
+}
