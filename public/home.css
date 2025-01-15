@@ -83,7 +83,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
     gap: 10px;
     align-items: center;
-    max-width: 800px;
+    /* max-width: 800px; */
     margin: 20px 0;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
 
@@ -115,6 +115,11 @@ body {
 }
 .search-btn:hover{
     background: rgb(169, 59, 8);
+}
+
+.search-section a{
+    text-align: center;
+    text-decoration: none;
 }
 
 .all-properties {
@@ -241,3 +246,6 @@ body {
     background-color: rgb(80, 99, 224);
 }
 
+.no-properties{
+    color: aliceblue;
+}

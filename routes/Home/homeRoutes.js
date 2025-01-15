@@ -8,8 +8,9 @@ router.use((req, res, next) => {
     next();
 });
 
-const {getHome,getAboutUs}=require("../../controllers/Home/homeController")
+const {getHome,getAboutUs,getViewDetails}=require("../../controllers/Home/homeController")
 router.get("/",getHome)
 router.get("/aboutus",getAboutUs)
+router.get("/viewdetails",getViewDetails)
 
 module.exports = router
