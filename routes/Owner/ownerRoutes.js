@@ -10,9 +10,11 @@ router.use((req, res, next) => {
     next();
 });
 
-const {getOwner}=require("../../controllers/Owner/ownerController")
+const {getOwner,postSearchProperties}=require("../../controllers/Owner/ownerController")
 
 router.get("/",ownerAuth,getOwner)
+router.post("/searchproperties",ownerAuth,postSearchProperties)
+
 
 const {getOwnerProfile,postOwnerProfile,upload1}=require("../../controllers/Owner/ownerprofileController")
 router.get("/ownerprofile",getOwnerProfile)

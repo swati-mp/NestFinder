@@ -288,21 +288,26 @@
 
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="search-section">
-                            <div class="search-box">
-                                <div class="searchtext">
-                                    <label for="">Search_By</label>
+                        <form action="/owner/searchproperties" method="post">
+                                <div class="search-section">
+                                    <div class="search-box">
+                                        <div class="searchtext">
+                                            <label for="">Search_By</label>
+                                        </div>
+                                        <select class="search-dropdown" name="criteria">
+                                            <option value="">Select</option>
+                                            <option value="city">City</option>
+                                            <option value="rooms">Number of Bedrooms(BHK)</option>
+                                            <option value="rent">Max-Rent</option>
+                                            
+                                        </select>
+                                        <input type="text" id="search" class="search-input" name="searchvalue"
+                                            placeholder="Search properties...">
+                                        <button class="search-btn">Search</button>
+                                        <a href="/owner" class="search-btn">Reset</a>
+                                    </div>
                                 </div>
-                                <select class="search-dropdown">
-                                    <option value="all">Select</option>
-                                    <option value="house">City</option>
-                                    <option value="apartment">No. of Rooms</option>
-                                    <option value="villa">Rent</option>
-                                </select>
-                                <input type="text" id="search" class="search-input" placeholder="Search properties...">
-                                <button class="search-btn">Search</button>
-                            </div>
-                        </div>
+                            </form>
                     </div>
                 </div><br>
 
