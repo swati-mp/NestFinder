@@ -14,7 +14,6 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <style>
-
         .complaint-form {
             width: 100%;
             margin: 2rem auto;
@@ -83,6 +82,13 @@
         .complaint-form button[type="submit"]:active {
             transform: translateY(1px);
         }
+        .serverresponse{
+    width: 100%;
+    background-color: aquamarine;
+    font-size: 1.5rem;
+    text-align: center;
+    padding: 10px;
+}
 
         /* Responsive adjustments */
         @media (max-width: 640px) {
@@ -363,17 +369,18 @@
                 </div>
 
                 <div class="row">
-                    <form class="complaint-form">
-                            <label for="complaintTitle">Complaint Title:</label>
-                            <input type="text" id="complaintTitle" name="complaintTitle"
-                                placeholder="Enter complaint title" required>
+                    <div class="serverresponse">{{success}}</div>
+                    <form action="/owner/addcomplaints" method="post" class="complaint-form">
+                        <label for="complaintTitle">Complaint Title:</label>
+                        <input type="text" id="complaintTitle" name="complaintTitle" placeholder="Enter complaint title"
+                            required>
 
-                            <label for="complaintDetails">Complaint Details:</label>
-                            <textarea id="complaintDetails" name="complaintDetails" placeholder="Describe your issue"
-                                rows="5" required></textarea>
+                        <label for="complaintDetails">Complaint Details:</label>
+                        <textarea id="complaintDetails" name="complaintDetails" placeholder="Describe your issue"
+                            rows="5" required></textarea>
 
-                            <button type="submit">Submit Complaint</button>
-                        </form>
+                        <button type="submit">Submit Complaint</button>
+                    </form>
 
                 </div>
             </div>

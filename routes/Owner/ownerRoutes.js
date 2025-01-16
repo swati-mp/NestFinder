@@ -34,6 +34,7 @@ router.get("/ownerseekerinquiries",getOwnerSeekerInquiry)
 const {getOwnerAnalytics}=require("../../controllers/Owner/owneranalyticsController")
 router.get("/owneranalytics",getOwnerAnalytics)
 
-const {getOwnerAddComplaints}=require("../../controllers/Owner/owneraddcomplaintsController")
+const {getOwnerAddComplaints,postOwnercomplaints}=require("../../controllers/Owner/owneraddcomplaintsController")
 router.get("/owneraddcomplaints",getOwnerAddComplaints)
+router.post("/addcomplaints",postOwnercomplaints)
 module.exports = router
