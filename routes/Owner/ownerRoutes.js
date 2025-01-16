@@ -28,9 +28,6 @@ const {getMyProperty,getViewdetails}=require("../../controllers/Owner/myproperti
 router.get("/ownermyproperties",getMyProperty)
 router.get("/viewdetails/:id",getViewdetails)
 
-const {getOwnerSeekerInquiry}=require("../../controllers/Owner/ownerseekerinquiries")
-router.get("/ownerseekerinquiries",getOwnerSeekerInquiry)
-
 const {getOwnerAnalytics}=require("../../controllers/Owner/owneranalyticsController")
 router.get("/owneranalytics",getOwnerAnalytics)
 
