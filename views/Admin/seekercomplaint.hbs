@@ -169,8 +169,8 @@
                             </ul> --}}
                         </li>
                         <li class="">
-                            <a href="/admin/adminprofile"><i class="fas fa-user-circle"></i> <span>MyProfile</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/admin/adminprofile"><i class="fas fa-user-circle"></i> <span>MyProfile</span>
+                                <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="index.html" class="active">Admin Dashboard</a></li>
                                 <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
@@ -196,18 +196,18 @@
                                 <li><a href="/admin/seekerdata">Seekers</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="menu-title">
                             <span>Management</span>
                         </li>
                         {{!-- <li class="submenu">
                             <a href="#"><i class="fas fa-building"></i> <span> Gallary of Properties </span> <span
                                     class="menu-arrow"></span></a>
-                             <ul>
+                            <ul>
                                 <li><a href="departments.html">Department List</a></li>
                                 <li><a href="add-department.html">Department Add</a></li>
                                 <li><a href="edit-department.html">Department Edit</a></li>
-                            </ul> 
+                            </ul>
                         </li> --}}
                         <li class="submenu active">
                             <a href="#"><i class="fas fa-exclamation-circle"></i> <span> User Complaints</span> <span
@@ -233,7 +233,7 @@
                                 <li><a href="/admin/unblockseeker">Seekers</a></li>
                             </ul>
                         </li>
-                        
+
                         <li class="menu-title">
                             <span>Logout</span>
                         </li>
@@ -242,7 +242,8 @@
                                 <!-- You can keep it hidden so it won't affect the UI -->
                                 <button type="submit" style="display: none;">Logout</button>
                             </form>
-                            <a href="#" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
+                            <a href="#"
+                                onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
                                     class="fas fa-shield-alt"></i> <span> Logout </span> <span
                                     class="menu-arrow"></span></a>
                         </li>
@@ -270,6 +271,7 @@
                                 <th>Seeker Email</th>
                                 <th>Complaint Title</th>
                                 <th>Complaint Details</th>
+                                <th>Give a response</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -280,12 +282,17 @@
                                 <td>{{this.email}}</td>
                                 <td>{{this.complaint_title}}</td>
                                 <td>{{this.complaint_details}}</td>
-                                <td>
-                                    <form action="/admin/readseekercomplaint" method="post">
+                                <form action="/admin/readseekercomplaint" method="post">
+                                    <td>
+                                        <textarea name="response" id="response" class="text-area" rows="3" required></textarea>
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="email" value="{{this.email}}">
+                                        <input type="hidden" name="complaint_title" value="{{this.complaint_title}}">
                                         <input type="hidden" name="complaintid" value="{{this.complaintid}}">
                                         <button type="submit" class="read-btn">Read</button>
-                                    </form>
-                                </td>
+                                    </td>
+                                </form>
                             </tr>
                             {{/each}}
                         </tbody>
@@ -294,7 +301,7 @@
             </div>
         </div>
     </div>
-    
+
 
     <script src="/assets/js/jquery-3.6.0.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>

@@ -270,6 +270,7 @@
                                 <th>Owner Email</th>
                                 <th>Complaint Title</th>
                                 <th>Complaint Details</th>
+                                <th>Give a response</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -280,12 +281,17 @@
                                 <td>{{this.email}}</td>
                                 <td>{{this.complaint_title}}</td>
                                 <td>{{this.complaint_details}}</td>
-                                <td>
-                                    <form action="/admin/readownercomplaint" method="post">
+                                <form action="/admin/readownercomplaint" method="post">
+                                    <td>
+                                        <textarea name="response" id="response" class="text-area" rows="3" required></textarea>
+                                    </td>
+                                    <td>
+                                        <input type="hidden" name="email" value="{{this.email}}">
+                                        <input type="hidden" name="complaint_title" value="{{this.complaint_title}}">
                                         <input type="hidden" name="complaintid" value="{{this.complaintid}}">
                                         <button type="submit" class="read-btn">Read</button>
-                                    </form>
-                                </td>
+                                    </td>
+                                </form>
                             </tr>
                             {{/each}}
                         </tbody>

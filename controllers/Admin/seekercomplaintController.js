@@ -1,4 +1,5 @@
 const { seekercomplaints } = require("../../model/Seeker/seekercomplaintsSchema");
+const { SeekerNotification } = require("../../model/Seeker/seekernotificationSchema");
 
 const getSeekerComplaint=async(req,res)=>{
     try {
@@ -14,6 +15,14 @@ const getSeekerComplaint=async(req,res)=>{
 
 const postSeekerComplaint=async(req,res)=>{
     try {
+        const notification = new SeekerNotification({
+            seekerEmail: req.body.email,
+            notification: `Response to your complaint with complaint Title: ${req.body.complaint_title} is ${req.body.response}`,
+        });
+
+        // Save the notification to the database
+        await notification.save();
+
         await seekercomplaints.deleteOne({complaintid:req.body.complaintid});
         const seekercomplaintdata=await seekercomplaints.find();
 
