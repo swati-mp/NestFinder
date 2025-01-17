@@ -34,7 +34,26 @@ const getViewdetails = async (req, res) => {
         console.log(error)
     }
 }
+
+const getUpdatedetails = async (req, res) => {
+    try {
+        // console.log(req.params.id)
+        const viewdetailsdata = await Property.findOne({ propertyId: req.params.id })
+        const ownerprofileimage = await owners.findOne({ email: req.cookies.email }).select("profilepicture")
+
+        // console.log(viewdetailsdata)
+        res.render("updatedetails", { 
+            property: viewdetailsdata,
+            email: req.cookies.email,
+            ownerprofileimage: ownerprofileimage.profilepicture
+        })
+    }
+    catch (error) {
+        console.log(error)
+    }
+}
 module.exports = {
     getMyProperty,
-    getViewdetails
+    getViewdetails,
+    getUpdatedetails
 }
