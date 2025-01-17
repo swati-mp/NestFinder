@@ -151,7 +151,12 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="sidebarimage">
-                            <img src="/assets/img/Shicon.webp" alt="Logo">
+                            {{#if ownerprofileimage}}
+                            <img src="/profileimages/{{email}}/{{ownerprofileimage}}" alt="Logo">
+                            {{else}}
+                            <img src="/assets/img/7.jpg" alt="Profile Picture" class="profile-image">
+                            {{/if}}
+                            {{!-- <img src="/profileimages/{{email}}/{{ownerprofileimage}}" alt="Logo"> --}}
                         </li>
                         <li class="menu-title">
                             <span>Main Menu</span>

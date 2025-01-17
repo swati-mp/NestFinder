@@ -154,7 +154,12 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="sidebarimage">
-                            <img src="/assets/img/Shicon.webp" alt="Logo">
+                            {{#if ownerprofileimage}}
+                            <img src="/profileimages/{{email}}/{{ownerprofileimage}}" alt="Logo">
+                            {{else}}
+                            <img src="/assets/img/7.jpg" alt="Profile Picture" class="profile-image">
+                            {{/if}}
+                            {{!-- <img src="/profileimages/{{email}}/{{ownerprofileimage}}" alt="Logo"> --}}
                         </li>
                         <li class="menu-title">
                             <span>Main Menu</span>
@@ -289,25 +294,25 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <form action="/owner/searchproperties" method="post">
-                                <div class="search-section">
-                                    <div class="search-box">
-                                        <div class="searchtext">
-                                            <label for="">Search_By</label>
-                                        </div>
-                                        <select class="search-dropdown" name="criteria">
-                                            <option value="">Select</option>
-                                            <option value="city">City</option>
-                                            <option value="rooms">Number of Bedrooms(BHK)</option>
-                                            <option value="rent">Max-Rent</option>
-                                            
-                                        </select>
-                                        <input type="text" id="search" class="search-input" name="searchvalue"
-                                            placeholder="Search properties...">
-                                        <button class="search-btn">Search</button>
-                                        <a href="/owner" class="search-btn">Reset</a>
+                            <div class="search-section">
+                                <div class="search-box">
+                                    <div class="searchtext">
+                                        <label for="">Search_By</label>
                                     </div>
+                                    <select class="search-dropdown" name="criteria">
+                                        <option value="">Select</option>
+                                        <option value="city">City</option>
+                                        <option value="rooms">Number of Bedrooms(BHK)</option>
+                                        <option value="rent">Max-Rent</option>
+
+                                    </select>
+                                    <input type="text" id="search" class="search-input" name="searchvalue"
+                                        placeholder="Search properties...">
+                                    <button class="search-btn">Search</button>
+                                    <a href="/owner" class="search-btn">Reset</a>
                                 </div>
-                            </form>
+                            </div>
+                        </form>
                     </div>
                 </div><br>
 
@@ -315,20 +320,20 @@
                     <main class="properties-section">
                         <!-- Property cards will be dynamically inserted here -->
                         {{#if liveproperties}}
-                            {{#each liveproperties}}
-                            <div class="property-card">
-                                <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
-                                <div class="property-info">
-                                    <div class="property-title">{{this.title}}</div>
-                                    <div class="property-details">{{this.bedrooms}} beds • {{this.bathrooms}} baths </div>
-                                    <div class="property-title">Deposit:{{this.deposit}} </div>
-                                    <div class="property-title">Rent:{{this.rent}} </div>
-                                    <button class="property-btn"
-                                        onclick="window.location.href='/owner/viewdetails/{{this.propertyId}}' ">View
-                                        Details</button>
-                                </div>
+                        {{#each liveproperties}}
+                        <div class="property-card">
+                            <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
+                            <div class="property-info">
+                                <div class="property-title">{{this.title}}</div>
+                                <div class="property-details">{{this.bedrooms}} beds • {{this.bathrooms}} baths </div>
+                                <div class="property-title">Deposit:{{this.deposit}} </div>
+                                <div class="property-title">Rent:{{this.rent}} </div>
+                                <button class="property-btn"
+                                    onclick="window.location.href='/owner/viewdetails/{{this.propertyId}}' ">View
+                                    Details</button>
                             </div>
-                            {{/each}}
+                        </div>
+                        {{/each}}
                         {{else}}
                         <div class="property-card">
                             No properties available

@@ -2,10 +2,13 @@ const multer = require("multer");
 const path = require("path");
 const fs = require("fs");
 const { Property } = require("../../model/Owner/PropertySchema");
+const { owners } = require("../../model/Owner/ownerSchema");
 
-const getAddProperty=(req,res)=>{
+const getAddProperty=async(req,res)=>{
+    const ownerprofileimage=await owners.findOne({ email: req.cookies.email }).select("profilepicture")
     res.render("owneraddproperties",{
-        email:req.cookies.email
+        email:req.cookies.email,
+        ownerprofileimage:ownerprofileimage.profilepicture
     })
 }
 
@@ -38,11 +41,13 @@ const uploadMultiple = upload.fields([
 const postAddProperties=async(req,res)=>{
     try {
         const { body, files } = req;
+        const ownerprofileimage=await owners.findOne({ email: req.cookies.email }).select("profilepicture")
 
         if(!body.latitude || !body.longitude){
             return res.render("owneraddproperties",{
                 email:req.cookies.email,
-                success:"Please select the location on map."
+                success:"Please select the location on map.",
+                ownerprofileimage:ownerprofileimage.profilepicture
             })
         }
 
@@ -83,6 +88,7 @@ const postAddProperties=async(req,res)=>{
         res.render("owneraddproperties",{
             email:req.cookies.email,
             success: "Property added successfully!",   
+            ownerprofileimage:ownerprofileimage.profilepicture
         })
     } catch (error) {
         console.log(error)
