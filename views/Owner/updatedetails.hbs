@@ -277,7 +277,7 @@
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">ADD PROPERTIES</h3>
+                            <h3 class="page-title">Update PROPERTY</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item active" style="color: black;">Dashboard</li>
                             </ul>
@@ -288,7 +288,7 @@
                 <div class="row">
                     <div class="serverresponse">{{success}}</div>
                     <form action="/owner/ownerupdateproperties" method="post" enctype="multipart/form-data">
-
+                        <input type="hidden" name="propertyId" value="{{property.propertyId}}" />
                         <label for="title">Title</label>
                         <input type="text" id="title" name="title" placeholder="Enter property title" value="{{property.title}}" required />
 
@@ -342,7 +342,7 @@
                         </div>
 
                         <label for="images">Property Images</label>
-                        <input type="file" id="images" name="images" multiple required />
+                        <input type="file" id="images" name="images" multiple />
 
                         <label for="mapLocation">Map Location(Stand in the Location then click on Fetch)</label>
                         <div class="form-group">
@@ -363,12 +363,12 @@
                         <div class="form-group">
                             <div>
                                 <label for="mapLocation">Govt ID: Ex:Adhar Card,Pan or Passport</label>
-                                <input type="file" id="govtid" name="govtid" placeholder="Adhar Card" required />
+                                <input type="file" id="govtid" name="govtid" placeholder="Adhar Card" />
                             </div>
                             <div>
                                 <label for="mapLocation">Property Doc: Ex:Property Tax Receipt,Sale Deed etc</label>
                                 <input type="file" id="propertydoc" name="propertydoc" placeholder="Adhar Card"
-                                    required />
+                                     />
 
                             </div>
                         </div>
