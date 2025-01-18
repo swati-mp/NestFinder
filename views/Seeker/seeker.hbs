@@ -250,47 +250,55 @@
                     </div>
                 </div>
 
+
                 <div class="row">
                     <div class="col-sm-12">
-                        <div class="search-section">
-                            <div class="search-box">
-                                <div class="searchtext">
-                                    <label for="">Search_By</label>
+                        <form action="/owner/searchproperties" method="post">
+                            <div class="search-section">
+                                <div class="search-box">
+                                    <div class="searchtext">
+                                        <label for="">Search_By</label>
+                                    </div>
+                                    <select class="search-dropdown" name="criteria">
+                                        <option value="">Select</option>
+                                        <option value="city">City</option>
+                                        <option value="rooms">Number of Bedrooms(BHK)</option>
+                                        <option value="rent">Max-Rent</option>
+
+                                    </select>
+                                    <input type="text" id="search" class="search-input" name="searchvalue"
+                                        placeholder="Search properties...">
+                                    <button class="search-btn">Search</button>
+                                    <a href="/owner" class="search-btn">Reset</a>
                                 </div>
-                                <select class="search-dropdown">
-                                    <option value="all">Select</option>
-                                    <option value="house">City</option>
-                                    <option value="apartment">No. of Rooms</option>
-                                    <option value="villa">Rent</option>
-                                </select>
-                                <input type="text" id="search" class="search-input" placeholder="Search properties...">
-                                <button class="search-btn">Search</button>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div><br>
 
                 <div class="row">
                     <main class="properties-section">
                         <!-- Property cards will be dynamically inserted here -->
+                        {{#if liveproperties}}
+                        {{#each liveproperties}}
                         <div class="property-card">
-                            <img src="/assets/img/admin.webp" alt="Modern Family Home" class="property-image">
+                            <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
                             <div class="property-info">
-                                <div class="property-title">Modern Family Home</div>
-                                <div class="property-details">3 beds • 2 baths • 1,800 sqft</div>
-                                <div class="property-title">$450,000</div>
-                                <button class="property-btn">View Details</button>
+                                <div class="property-title">{{this.title}}</div>
+                                <div class="property-details">{{this.bedrooms}} beds • {{this.bathrooms}} baths </div>
+                                <div class="property-title">Deposit:{{this.deposit}} </div>
+                                <div class="property-title">Rent:{{this.rent}} </div>
+                                <button class="property-btn"
+                                    onclick="window.location.href='/seeker/viewdetails/{{this.propertyId}}' ">View
+                                    Details</button>
                             </div>
                         </div>
+                        {{/each}}
+                        {{else}}
                         <div class="property-card">
-                            <img src="/assets/img/admin.webp" alt="Modern Family Home" class="property-image">
-                            <div class="property-info">
-                                <div class="property-title">Modern Family Home</div>
-                                <div class="property-details">3 beds • 2 baths • 1,800 sqft</div>
-                                <div class="property-title">$450,000</div>
-                                <button class="property-btn">View Details</button>
-                            </div>
+                            No properties available
                         </div>
+                        {{/if}}
                     </main>
                 </div>
             </div>

@@ -10,9 +10,10 @@ router.use((req, res, next) => {
     next();
 });
 
-const {getSeeker}=require("../../controllers/Seeker/seekerController")
+const {getSeeker,getViewdetails}=require("../../controllers/Seeker/seekerController")
 
 router.get("/",seekerAuth,getSeeker)
+router.get("/viewdetails/:id",seekerAuth,getViewdetails)
 
 const {getSeekerProfile,postSeekerProfile,upload1} = require("../../controllers/Seeker/seekerprofileController")
 router.get("/seekerprofile",getSeekerProfile)
