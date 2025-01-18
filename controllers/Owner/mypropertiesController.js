@@ -132,7 +132,7 @@ const postUpdateProperties = async (req, res) => {
             "mapLocation.latitude": body.latitude,
             "mapLocation.longitude": body.longitude,
             datePosted: body.datePosted,
-            status: body.status,
+            // status: body.status,
             approved: false, // Mark property unapproved after update
         };
 
@@ -175,10 +175,31 @@ const postUpdateProperties = async (req, res) => {
     }
 };
 
+const updateStatus = (socket) => {
+    socket.on('updateStatus', async (data) => {
+        try {
+            const { propertyId, status } = data;
+            const updatedStatus = status === "Available" ? "Available" : "Unavailable";
+            
+            // Update status in the database
+            await Property.findOneAndUpdate(
+                { propertyId },
+                { status: updatedStatus }
+            );
+
+            // Emit the updated status back to the client
+            socket.emit('statusUpdated', { propertyId, status: updatedStatus });
+        } catch (error) {
+            console.error("Error updating status:", error);
+        }
+    });
+}
+
 module.exports = {
     getMyProperty,
     getViewdetails,
     getUpdatedetails,
     postUpdateProperties,
-    uploadMultiple1
+    uploadMultiple1,
+    updateStatus
 }

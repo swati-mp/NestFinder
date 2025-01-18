@@ -1,3 +1,7 @@
+/* eslint-disable no-unused-vars */
+// eslint-disable-next-line no-undef
+const socket = io(); // Connect to the Socket.IO server
+
 var toggleButton = document.getElementById('toggle_btn');
 var hideTitle = document.getElementById('hide-title');
 
@@ -35,3 +39,22 @@ window.addEventListener('resize', function () {
 if (!document.cookie.includes('email')) {
     window.location.replace('/');
 }
+
+
+
+// Function to update the status when checkbox changes
+function updateStatus(propertyId, isChecked) {
+    const status = isChecked ? "Available" : "Unavailable";
+    socket.emit('updateStatus', { propertyId, status });  // Emit the status change to server
+}
+
+// Listen for real-time updates from the server and update the UI
+socket.on('statusUpdated', (data) => {
+    const statusText = document.getElementById(`statusText${data.propertyId}`);
+    const statusToggle = document.getElementById(`statusToggle${data.propertyId}`);
+
+    if (statusText && statusToggle) {
+        statusText.innerText = data.status; // Update the text showing the status
+        statusToggle.checked = data.status === "Available"; // Update checkbox based on status
+    }
+});

@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
-     <link rel="stylesheet" href="/seeker.css">
+    <link rel="stylesheet" href="/seeker.css">
 </head>
 
 <body>
@@ -142,7 +142,8 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="/owner/ownerprofile">My Profile</a>
-                        <a class="dropdown-item" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
+                        <a class="dropdown-item"
+                            onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -190,11 +191,11 @@
                                 <li><a href="edit-student.html">Student Edit</a></li> --}}
                             </ul>
                         </li>
-                       
+
 
                         <li class="">
-                            <a href="/owner/owneranalytics"><i class="fas fa-chalkboard-teacher"></i> <span> Property Analytics</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/owner/owneranalytics"><i class="fas fa-chalkboard-teacher"></i> <span> Property
+                                    Analytics</span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -203,9 +204,9 @@
                         </li>
 
                         <li class="">
-                            <a href="/owner/owneraddcomplaints"><i class="fas fa-chalkboard-teacher"></i> <span> Add Complaints</span> <span
-                                    class="menu-arrow"></span></a>
-                             {{!-- <ul>
+                            <a href="/owner/owneraddcomplaints"><i class="fas fa-chalkboard-teacher"></i> <span> Add
+                                    Complaints</span> <span class="menu-arrow"></span></a>
+                            {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
                                 <li><a href="/admin/seekerdata">Seekers</a></li>
@@ -258,7 +259,8 @@
                                 <!-- You can keep it hidden so it won't affect the UI -->
                                 <button type="submit" style="display: none;">Logout</button>
                             </form>
-                            <a href="#" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
+                            <a href="#"
+                                onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
                                     class="fas fa-shield-alt"></i> <span> Logout </span> <span
                                     class="menu-arrow"></span></a>
                         </li>
@@ -278,43 +280,57 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="row">
                     <main class="properties-section">
-            <!-- Property cards will be dynamically inserted here -->
-            {{#each myProperties}}
-            <div class="property-card">
-                <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
-                <div class="property-info">
-                    <div class="property-title">{{this.title}}</div>
-                    <div class="property-details">{{this.bedrooms}} beds • {{this.bathrooms}} baths </div>
-                    <div class="property-title">Rent:{{this.rent}}</div>
-                    <div class="property-title">
-                        {{#if this.approved}}
-                            Approved
-                        {{else}}
-                            Not Approved
-                        {{/if}}
-                    </div>
-                    <button class="property-btn" onclick="window.location.href='/owner/viewdetails/{{this.propertyId}}' ">View Details</button>
-                    <button class="property-btn" onclick="window.location.href='/owner/updatedetails/{{this.propertyId}}' ">Update Details</button>
-                </div>
-            </div>
-            {{/each}}
-            
-        </main>
+                        <!-- Property cards will be dynamically inserted here -->
+                        {{#each myProperties}}
+                        <div class="property-card">
+                            <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
+                            <div class="property-info">
+                                <div class="property-title">{{this.title}}</div>
+                                <div class="property-details">{{this.bedrooms}} beds • {{this.bathrooms}} baths </div>
+                                <div class="property-title">Rent:{{this.rent}}</div>
+                                <div class="property-title">
+                                    {{#if this.approved}}
+                                    Approved
+                                    {{else}}
+                                    Not Approved
+                                    {{/if}}
+                                </div>
+                                <div class="property-title">
+                                    <label for="statusToggle{{this.propertyId}}">Status:</label>
+                                    <input type="checkbox" id="statusToggle{{this.propertyId}}"
+                                        onchange="updateStatus('{{this.propertyId}}', this.checked)" {{#if (eq
+                                        this.status 'Available' )}}checked{{/if}} />
+                                    <span id="statusText{{this.propertyId}}">
+                                        {{this.status}}
+                                    </span>
+                                </div>
+
+
+                                <button class="property-btn"
+                                    onclick="window.location.href='/owner/viewdetails/{{this.propertyId}}' ">View
+                                    Details</button>
+                                <button class="property-btn"
+                                    onclick="window.location.href='/owner/updatedetails/{{this.propertyId}}' ">Update
+                                    Details</button>
+                            </div>
+                        </div>
+                        {{/each}}
+
+                    </main>
                 </div>
             </div>
         </div>
     </div>
-
 
     <script src="/assets/js/jquery-3.6.0.min.js"></script>
     <script src="/assets/js/popper.min.js"></script>
     <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/assets/js/script.js"></script>
-
+    <script src="/socket.io/socket.io.js"></script>
     <script src="/assets/js/handleheader.js"></script>
 </body>
 

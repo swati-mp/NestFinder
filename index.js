@@ -2,8 +2,14 @@ const express=require("express");
 const path=require("path")
 const cookieParser = require("cookie-parser")
 const fs = require("fs");
-
+const http = require('http');
+const hbs = require('hbs');
+const { Server } = require('socket.io');
 const app=express();
+const server = http.createServer(app);
+const io = new Server(server);
+
+const socketEvents = require('./Socket/socketEvents');
 
 //Below package used to access .env data
 require("dotenv").config()
@@ -43,6 +49,12 @@ app.use("/",homeRoutes)
 app.use("/owner",ownerRoutes)
 app.use("/seeker",seekerRoutes)
 
+// Load socket event handlers
+socketEvents(io);
+
+// Register the 'eq' helper globally using hbs
+hbs.registerHelper('eq', (a, b) => a === b);
+
 //if user hit any unregistered route he will get pagenot found error
 app.use((req, res) => {
     const defaultViewsDir = path.join(__dirname, "views"); // Main views folder
@@ -56,7 +68,7 @@ app.use((req, res) => {
     res.render("pagenotfound");
 });
 
-app.listen(port,()=>{
+server.listen(port,()=>{
     console.log(`Server running on port no ${port}`)
 })
 
