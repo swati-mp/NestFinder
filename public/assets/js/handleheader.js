@@ -58,3 +58,9 @@ socket.on('statusUpdated', (data) => {
         statusToggle.checked = data.status === "Available"; // Update checkbox based on status
     }
 });
+
+// Listen for the onlineUsersCount event
+socket.on('onlineusers', (count) => {
+    // Update the UI with the new online user count
+    document.getElementById('onlineUsersCount').innerText = `${count}`;
+});
