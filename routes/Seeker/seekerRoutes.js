@@ -27,7 +27,8 @@ router.get("/seekerhistory",getHistory)
 const {getSeekerWishlist} = require("../../controllers/Seeker/seekerwishlistController")
 router.get("/seekerwishlist",getSeekerWishlist)
 
-const {getSeekerComplaint} = require("../../controllers/Seeker/seekercomplaintController")
+const {getSeekerComplaint,postSeekercomplaints} = require("../../controllers/Seeker/seekercomplaintController")
 router.get("/seekercomplaint",getSeekerComplaint)
+router.post("/addcomplaints",postSeekercomplaints)    
 
 module.exports = router
