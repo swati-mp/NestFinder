@@ -14,8 +14,9 @@ const {getSeeker}=require("../../controllers/Seeker/seekerController")
 
 router.get("/",seekerAuth,getSeeker)
 
-const {getSeekerProfile} = require("../../controllers/Seeker/seekerprofileController")
+const {getSeekerProfile,postSeekerProfile,upload1} = require("../../controllers/Seeker/seekerprofileController")
 router.get("/seekerprofile",getSeekerProfile)
+router.post("/seekerprofile",upload1.single('profilepicture'),postSeekerProfile)
 
 const {getInquriesResponse} = require("../../controllers/Seeker/InquriesResponseController")
 router.get("/seekerinquiryresponse",getInquriesResponse)

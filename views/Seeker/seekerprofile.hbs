@@ -153,7 +153,12 @@
                 <div id="sidebar-menu" class="sidebar-menu">
                     <ul>
                         <li class="sidebarimage">
-                            <img src="/assets/img/Shicon.webp" alt="Logo">
+                            {{#if seekerprofileimage}}
+                            <img src="/profileimages/{{email}}/{{seekerprofileimage}}" alt="Logo">
+                            {{else}}
+                            <img src="/assets/img/7.jpg" alt="Profile Picture" class="profile-image">
+                            {{/if}}
+                            {{!-- <img src="/profileimages/{{email}}/{{ownerprofileimage}}" alt="Logo"> --}}
                         </li>
                         <li class="menu-title">
                             <span>Main Menu</span>
@@ -190,7 +195,7 @@
                                 </span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
-                                <li><a href="/admin/ownerdata">Owners</a></li>
+                                <li><a href="/admin/seekerdata">Owners</a></li>
                                 <li><a href="/admin/seekerdata">Seekers</a></li>
                             </ul> --}}
                         </li>
@@ -199,7 +204,7 @@
                                 </span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
-                                <li><a href="/admin/ownerdata">Owners</a></li>
+                                <li><a href="/admin/seekerdata">Owners</a></li>
                                 <li><a href="/admin/seekerdata">Seekers</a></li>
                             </ul> --}}
                         </li>
@@ -208,7 +213,7 @@
                                     Complaint </span> <span class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
-                                <li><a href="/admin/ownerdata">Owners</a></li>
+                                <li><a href="/admin/seekerdata">Owners</a></li>
                                 <li><a href="/admin/seekerdata">Seekers</a></li>
                             </ul> --}}
                         </li>
@@ -243,38 +248,53 @@
                         </div>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="profile-container">
-                        <div class="profile-picture">
-                            <img src="/assets/img/logo-small.png" alt="Profile Picture">
+               <div class="row">
+                    <div class="serverresponse">{{success}}</div>
+                    <form action="/seeker/seekerprofile" method="post" enctype="multipart/form-data">
+                        <div class="profile-container">
+                            <div class="profile-picture">
+                                {{#if seekerdata.profilepicture}}
+                                <img src="/profileimages/{{seekerdata.email}}/{{seekerdata.profilepicture}}" alt="Profile Picture"
+                                    class="profile-image">
+                                {{else}}
+                                <img src="/assets/img/7.jpg" alt="Profile Picture" class="profile-image">
+                                {{/if}}
+                            </div>
+                            <div class=""></div>
+                            <div class="profile-field">
+                                <span>First Name</span>
+                                <input type="text" placeholder="Enter First Name" name="name" value="{{seekerdata.name}}">
+                            </div>
+                            <div class="profile-field">
+                                <span>Last Name</span> 
+                                <input type="text" placeholder="Enter Last Name" name="lastname" value="{{seekerdata.lastname}}">
+                            </div>
+                            <div class="profile-field">
+                                <span>Email</span>
+                                <input type="email" style="background-color: aqua;" placeholder="Enter Email" name="email" value="{{seekerdata.email}}" readonly>
+                            </div>
+                            <div class="profile-field">
+                                <span>Phone Number</span>
+                                <input type="tel" placeholder="Enter Phone Number" name="phonenumber" value="{{seekerdata.phonenumber}}">
+                            </div>
+                            <div class="profile-field address">
+                                <span>Address</span>
+                                <span></span>
+                                <input type="text" placeholder="Enter Street" name="street" value="{{seekerdata.address.street}}">
+                                <input type="text" placeholder="Enter City" name="city" value="{{seekerdata.address.city}}">
+                                <input type="text" placeholder="Enter State" name="state" value="{{seekerdata.address.state}}">
+                                <input type="text" placeholder="Enter Zipcode" name="zipcode" value="{{seekerdata.address.zipcode}}">
+                            </div>
+                            <div class="profile-field">
+                                <span>Upload Profile-image</span>
+                                <input type="file" name="profilepicture">
+                            </div>
+                            
+                            <div class=""></div>
+                            {{!-- <a href="#" class="update-button">Update Profile</a> --}}
+                            <button type="submit" class="update-button">Update Profile</button>
                         </div>
-                        <div class=""></div>
-                        <div class="profile-field">
-                            <span>First Name</span>
-                            <input type="text" placeholder="Enter First Name">
-                        </div>
-                        <div class="profile-field">
-                            <span>Last Name</span>
-                            <input type="text" placeholder="Enter Last Name">
-                        </div>
-                        <div class="profile-field">
-                            <span>Email</span>
-                            <input type="email" placeholder="Enter Email">
-                        </div>
-                        <div class="profile-field">
-                            <span>Phone Number</span>
-                            <input type="tel" placeholder="Enter Phone Number">
-                        </div>
-                        <div class="profile-field">
-                            <span>Password</span>
-                            <input type="password" placeholder="Enter Password">
-                        </div>
-                        <div class="profile-field">
-                            <span>Upload Profile-image</span>
-                            <input type="file">
-                        </div>
-                        <a href="#" class="update-button">Update Profile</a>
-                    </div>
+                    </form>
                 </div>
             </div>
         </div>
