@@ -19,12 +19,6 @@ const {getSeekerProfile,postSeekerProfile,upload1} = require("../../controllers/
 router.get("/seekerprofile",getSeekerProfile)
 router.post("/seekerprofile",upload1.single('profilepicture'),postSeekerProfile)
 
-const {getInquriesResponse} = require("../../controllers/Seeker/InquriesResponseController")
-router.get("/seekerinquiryresponse",getInquriesResponse)
-
-const {getHistory} = require("../../controllers/Seeker/seekerhistoryController")
-router.get("/seekerhistory",getHistory)
-
 const {getSeekerWishlist} = require("../../controllers/Seeker/seekerwishlistController")
 router.get("/seekerwishlist",getSeekerWishlist)
 
