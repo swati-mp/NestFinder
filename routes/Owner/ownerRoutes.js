@@ -24,11 +24,12 @@ const {getAddProperty,postAddProperties,uploadMultiple}=require("../../controlle
 router.get("/owneraddproperties",getAddProperty)
 router.post("/owneraddproperties",uploadMultiple,postAddProperties)
 
-const {getMyProperty,getViewdetails,getUpdatedetails,postUpdateProperties,uploadMultiple1}=require("../../controllers/Owner/mypropertiesController")
+const {getMyProperty,getViewdetails,getUpdatedetails,postUpdateProperties,uploadMultiple1,deleteproperty}=require("../../controllers/Owner/mypropertiesController")
 router.get("/ownermyproperties",getMyProperty)
 router.get("/viewdetails/:id",getViewdetails)
 router.get("/updatedetails/:id",getUpdatedetails)
 router.post("/ownerupdateproperties", uploadMultiple1, postUpdateProperties);
+router.get("/deleteproperty/:id",deleteproperty)
 
 const {getOwnerAnalytics}=require("../../controllers/Owner/owneranalyticsController")
 router.get("/owneranalytics",getOwnerAnalytics)

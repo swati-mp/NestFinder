@@ -195,11 +195,70 @@ const updateStatus = (socket) => {
     });
 }
 
+const deleteFile1 = (filePath) => {
+    return new Promise((resolve, reject) => {
+        fs.unlink(filePath, (err) => {
+            if (err) {
+                console.error(`Failed to delete file: ${filePath}`, err);
+                return reject(err);
+            }
+            resolve();
+        });
+    });
+};
+const deleteproperty = async (req, res) => {
+    try {
+        const propertyId = req.params.id; // Assuming propertyId is sent in the request body
+        // console.log(propertyId);
+        // Find the property by propertyId
+        const property = await Property.findOne({ propertyId });
+        if (!property) {
+            return res.status(404).json({ message: "Property not found" });
+        }
+
+        // Delete related files (images, govtid, propertydoc)
+        const fileDeletionPromises = [];
+
+        // Delete images
+        if (property.images && property.images.length > 0) {
+            property.images.forEach((imagePath) => {
+                const fullPath = path.join(__dirname, '../../public', imagePath);
+                fileDeletionPromises.push(deleteFile1(fullPath));
+            });
+        }
+
+        // Delete government ID
+        if (property.govtid) {
+            const govtidPath = path.join(__dirname, '../../public', property.govtid);
+            fileDeletionPromises.push(deleteFile1(govtidPath));
+        }
+
+        // Delete property document
+        if (property.propertydoc) {
+            const propertydocPath = path.join(__dirname, '../../public', property.propertydoc);
+            fileDeletionPromises.push(deleteFile1(propertydocPath));
+        }
+
+        // Wait for all file deletions to complete
+        await Promise.all(fileDeletionPromises);
+
+        // Delete the property from the database
+        await Property.deleteOne({ propertyId });
+
+        // return res.status(200).json({ message: "Property and related files deleted successfully" });
+        res.redirect("/owner/ownermyproperties");
+    } catch (error) {
+        console.error("Error deleting property:", error);
+        return res.status(500).json({ message: "Internal Server Error" });
+    }
+};
+
 module.exports = {
     getMyProperty,
     getViewdetails,
     getUpdatedetails,
     postUpdateProperties,
     uploadMultiple1,
-    updateStatus
+    updateStatus,
+    deleteproperty
 }

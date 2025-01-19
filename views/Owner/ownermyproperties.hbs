@@ -214,8 +214,8 @@
                         </li>
 
                         <li class="">
-                            <a href="/owner/ownernotification"><i class="fas fa-chalkboard-teacher"></i> <span> Notification</span> <span
-                                    class="menu-arrow"></span></a>
+                            <a href="/owner/ownernotification"><i class="fas fa-chalkboard-teacher"></i> <span>
+                                    Notification</span> <span class="menu-arrow"></span></a>
                         </li>
 
 
@@ -320,6 +320,18 @@
                                 <button class="property-btn"
                                     onclick="window.location.href='/owner/updatedetails/{{this.propertyId}}' ">Update
                                     Details</button>
+                                <button class="property-btn" onclick="confirmDeletion('{{this.propertyId}}')">Delete
+                                    Property
+                                </button>
+                                <script>
+                                    function confirmDeletion(propertyId) {
+                                        const userConfirmed = confirm("Are you sure you want to delete this property? This action cannot be undone.");
+                                        if (userConfirmed) {
+                                            // Redirect to the delete route
+                                            window.location.href = `/owner/deleteproperty/${propertyId}`;
+                                        }
+                                    }
+                                </script>
                             </div>
                         </div>
                         {{/each}}
