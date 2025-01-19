@@ -129,7 +129,7 @@ const postAddToWishlist = async (socket) => {
             // Fetch the user document
             const user = await seekers.findOne({ email });
             if (!user) {
-                return socket.emit("wishlist-updated", {
+                return socket.emit("error", {
                     message: "User not found",
                 });
             }
@@ -143,22 +143,18 @@ const postAddToWishlist = async (socket) => {
                     { email },
                     { $pull: { wishlist: propertyId } }
                 );
-                socket.emit("wishlist-removed", {
-                    message: "Property removed from wishlist",
-                });
+                socket.emit("wishlist-removed");
             } else {
                 // Add the property to the wishlist
                 await seekers.updateOne(
                     { email },
                     { $addToSet: { wishlist: propertyId } }
                 );
-                socket.emit("wishlist-updated", {
-                    message: "Property added to wishlist successfully!",
-                });
+                socket.emit("wishlist-updated");
             }
         } catch (error) {
             console.error("Error in wishlist operation:", error);
-            socket.emit("wishlist-updated", {
+            socket.emit("error", {
                 message: "An error occurred while saving to wishlist",
             });
         }

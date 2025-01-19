@@ -473,6 +473,10 @@
         socket.on('wishlist-removed', (response) => {
             document.getElementById('wishlist').classList.remove('selected');
         });
+
+        socket.on('error',(message)=>{
+            alert(message);
+        });
     </script>
 
 </body>
