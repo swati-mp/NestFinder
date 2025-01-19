@@ -55,7 +55,14 @@ const postLogin = async (req, res) => {
             req.app.set("views", path.join(__dirname, "../../views/Owner"));
             setCookie(email)
             setToken(process.env.OWNER_KEY, email)
-            return res.render("owner")
+            const ownerprofileimage = await owners.findOne({ email: email }).select("profilepicture")
+            const allproperties = await Property.find({ status: "Available", approved: true });
+            return res.render("owner", {
+                liveproperties: allproperties,
+                notice: "Update your profile to list properties based on your city",
+                ownerprofileimage: ownerprofileimage.profilepicture,
+                email: email
+            });
         }
 
         // If the email is present in seeker collection
