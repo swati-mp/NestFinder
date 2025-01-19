@@ -27,4 +27,8 @@ const {getSeekerComplaint,postSeekercomplaints} = require("../../controllers/See
 router.get("/seekercomplaint",getSeekerComplaint)
 router.post("/addcomplaints",postSeekercomplaints)    
 
+const {getSeekerNotification,postSeekerNotification} = require("../../controllers/Seeker/seekernotificationController")
+router.get("/seekernotification",getSeekerNotification)
+router.post("/readseekernotification",postSeekerNotification)
+
 module.exports = router

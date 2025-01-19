@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/seeker.css">
+    <link rel="stylesheet" href="/adminproperties.css">
+    <link rel="stylesheet" href="/adminownerseekertable.css">
 </head>
 
 <body>
@@ -181,30 +183,30 @@
                                 <li><a href="student-dashboard.html">Student Dashboard</a></li>
                             </ul> --}}
                         </li>
-                        
+
+                        <li class="">
+                            <a href="/seeker/seekerwishlist"><i class="fas fa-chalkboard-teacher"></i> <span> Wishlist
+                                </span> <span class="menu-arrow"></span></a>
+                            {{!-- <ul>
+                                <li><a href="teachers.html">Admins</a></li>
+                                <li><a href="/admin/ownerdata">Owners</a></li>
+                                <li><a href="/admin/seekerdata">Seekers</a></li>
+                            </ul> --}}
+                        </li>
+                        <li class="">
+                            <a href="/seeker/seekercomplaint"><i class="fas fa-chalkboard-teacher"></i> <span> Add
+                                    Complaint </span> <span class="menu-arrow"></span></a>
+                            {{!-- <ul>
+                                <li><a href="teachers.html">Admins</a></li>
+                                <li><a href="/admin/ownerdata">Owners</a></li>
+                                <li><a href="/admin/seekerdata">Seekers</a></li>
+                            </ul> --}}
+                        </li>
                         <li class="active">
-                            <a href="/seeker/seekerwishlist"><i class="fas fa-chalkboard-teacher"></i> <span> Wishlist </span> <span
-                                    class="menu-arrow"></span></a>
-                            {{!-- <ul>
-                                <li><a href="teachers.html">Admins</a></li>
-                                <li><a href="/admin/ownerdata">Owners</a></li>
-                                <li><a href="/admin/seekerdata">Seekers</a></li>
-                            </ul> --}}
-                        </li>
-                        <li class="">
-                            <a href="/seeker/seekercomplaint"><i class="fas fa-chalkboard-teacher"></i> <span> Add Complaint </span> <span
-                                    class="menu-arrow"></span></a>
-                            {{!-- <ul>
-                                <li><a href="teachers.html">Admins</a></li>
-                                <li><a href="/admin/ownerdata">Owners</a></li>
-                                <li><a href="/admin/seekerdata">Seekers</a></li>
-                            </ul> --}}
-                        </li>
-                        <li class="">
-                            <a href="/seeker/seekernotification"><i class="fas fa-chalkboard-teacher"></i> <span> Notification </span> <span class="menu-arrow"></span></a>
+                            <a href="/seeker/seekernotification"><i class="fas fa-chalkboard-teacher"></i> <span>
+                                    Notification </span> <span class="menu-arrow"></span></a>
                         </li>
 
-                       
 
                         <li class="menu-title">
                             <span>Logout</span>
@@ -228,7 +230,7 @@
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">My Wishlist</h3>
+                            <h3 class="page-title">Welcome Seeker!</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item active" style="color: black;">Dashboard</li>
                             </ul>
@@ -236,28 +238,34 @@
                     </div>
                 </div>
                 <div class="row">
-                    <main class="properties-section">
-                        <!-- Property cards will be dynamically inserted here -->
-                        <div class="property-card">
-                            <img src="/assets/img/admin.webp" alt="Modern Family Home" class="property-image">
-                            <div class="property-info">
-                                <div class="property-title">Modern Family Home</div>
-                                <div class="property-details">3 beds • 2 baths • 1,800 sqft</div>
-                                <div class="property-title">$450,000</div>
-                                <button class="property-btn">View Details</button>
-                            </div>
-                        </div>
-                        <div class="property-card">
-                            <img src="/assets/img/admin.webp" alt="Modern Family Home" class="property-image">
-                            <div class="property-info">
-                                <div class="property-title">Modern Family Home</div>
-                                <div class="property-details">3 beds • 2 baths • 1,800 sqft</div>
-                                <div class="property-title">$450,000</div>
-                                <button class="property-btn">View Details</button>
-                            </div>
-                        </div>
-                    </main>
+                    <table class="profile-table">
+                        <thead>
+                            <tr>
+                                <th>Seeker Email</th>
+                                <th>Notification</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each list}}
+                            <tr>
+                                <td>{{this.seekerEmail}}</td>
+                                <td>{{this.notification}}</td>
+                                <td>{{this.date}}</td>
+                                 <form action="/seeker/readseekernotification" method="post">
+                                    <td>
+                                        <input type="hidden" name="id" value="{{this._id}}">
+                                        <button type="submit" class="read-btn">Read</button>
+                                    </td>
+                                </form>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
                 </div>
+
+
             </div>
         </div>
     </div>
