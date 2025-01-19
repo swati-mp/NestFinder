@@ -3,13 +3,13 @@ const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
 
-const getSeekerProfile = async(req,res)=>{
+const getSeekerProfile = async (req, res) => {
     try {
         const seekerprofileimage = await seekers.findOne({ email: req.cookies.email }).select("profilepicture")
 
         const email = req.cookies.email;
         const seekerdata = await seekers.findOne({ email: email });
-        res.render("seekerprofile",{
+        res.render("seekerprofile", {
             seekerdata,
             seekerprofileimage: seekerprofileimage.profilepicture,
             email: req.cookies.email
@@ -17,9 +17,9 @@ const getSeekerProfile = async(req,res)=>{
 
     } catch (error) {
         console.log(error)
-        
+
     }
-    
+
 }
 
 
@@ -27,12 +27,12 @@ const storage1 = multer.diskStorage({
     destination: (req, file, cb) => {
         const email = req.cookies.email;
         const folderPath = path.join(__dirname, '../../public/profileimages', email);
-        
+
         // Ensure directory exists before storing the file
         if (!fs.existsSync(folderPath)) {
             fs.mkdirSync(folderPath, { recursive: true });
         }
-        
+
         cb(null, folderPath);
     },
     filename: (req, file, cb) => {
@@ -45,7 +45,6 @@ const upload1 = multer({ storage: storage1 });
 const postSeekerProfile = async (req, res) => {
     const email = req.cookies.email; // Email from cookie
     const { name, lastname, phonenumber, street, city, state, zipcode } = req.body;
-    const seekerprofileimage = await seekers.findOne({ email: req.cookies.email }).select("profilepicture")
 
     try {
         // Prepare the update object dynamically
@@ -83,6 +82,8 @@ const postSeekerProfile = async (req, res) => {
         }
 
         const seekerdata = await seekers.findOne({ email: email });
+        const seekerprofileimage = await seekers.findOne({ email: req.cookies.email }).select("profilepicture")
+
         res.render("seekerprofile", {
             seekerdata,
             success: 'Profile updated successfully',

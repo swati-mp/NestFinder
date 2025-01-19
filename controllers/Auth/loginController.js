@@ -65,13 +65,13 @@ const postLogin = async (req, res) => {
             setCookie(email)
             setToken(process.env.SEEKER_KEY, email)//Set a token to logged in user
             const allproperties = await Property.find({ status: "Available", approved: true });
-            const seekerprofileimage = await seekers.findOne({ email: req.cookies.email }).select("profilepicture")
+            const seekerprofileimage = await seekers.findOne({ email: email }).select("profilepicture")
 
             return res.render("seeker", {
                 liveproperties: allproperties,
                 notice: "Update your profile to list properties based on your city",
                 seekerprofileimage: seekerprofileimage.profilepicture,
-                email: req.cookies.email
+                email: email
             });
         }
 

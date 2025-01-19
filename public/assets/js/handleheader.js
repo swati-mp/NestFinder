@@ -62,5 +62,9 @@ socket.on('statusUpdated', (data) => {
 // Listen for the onlineUsersCount event
 socket.on('onlineusers', (count) => {
     // Update the UI with the new online user count
-    document.getElementById('onlineUsersCount').innerText = `${count}`;
+    if(document.getElementById('onlineUsersCount'))
+    {
+        document.getElementById('onlineUsersCount').innerText = `${count}`;
+    }
+    // document.getElementById('onlineUsersCount').innerText = `${count}`;
 });
