@@ -285,21 +285,6 @@
                 
                 <div class="row">
                     <div class="col-xl-3 col-sm-6 col-12 d-flex">
-                        <div class="card bg-one w-100">
-                            <div class="card-body">
-                                <div class="db-widgets d-flex justify-content-between align-items-center">
-                                    <div class="db-icon">
-                                        <i class="fas fa-user-tie"></i>
-                                    </div>
-                                    <div class="db-info">
-                                        <h3>10</h3>
-                                        <h6>views</h6>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
                         <div class="card bg-two w-100">
                             <div class="card-body">
                                 <div class="db-widgets d-flex justify-content-between align-items-center">
@@ -307,8 +292,8 @@
                                         <i class="fas fa-search"></i>
                                     </div>
                                     <div class="db-info">
-                                        <h3>50+</h3>
-                                        <h6>Inquiries</h6>
+                                        <h3>{{onwernotificationcount}}</h3>
+                                        <h6>Notifications</h6>
                                     </div>
                                 </div>
                             </div>
@@ -322,8 +307,8 @@
                                         <i class="fas fa-home"></i>
                                     </div>
                                     <div class="db-info">
-                                        <h3>30+</h3>
-                                        <h6>Wishlist</h6>
+                                        <h3>{{totalproperties}}</h3>
+                                        <h6>Total Properties Listed</h6>
                                     </div>
                                 </div>
                             </div>
@@ -337,8 +322,23 @@
                                         <i class="fas fa-building"></i>
                                     </div>
                                     <div class="db-info">
-                                        <h3>10</h3>
-                                        <h6>Days listed</h6>
+                                        <h3>{{livepropertiescount}}</h3>
+                                        <h6>Live Properties</h6>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-sm-6 col-12 d-flex">
+                        <div class="card bg-three w-100">
+                            <div class="card-body">
+                                <div class="db-widgets d-flex justify-content-between align-items-center">
+                                    <div class="db-icon">
+                                        <i class="fas fa-home"></i>
+                                    </div>
+                                    <div class="db-info">
+                                        <h3>{{pendingpropertiescount}}</h3>
+                                        <h6>Pending Properties</h6>
                                     </div>
                                 </div>
                             </div>
