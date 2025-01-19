@@ -1,4 +1,5 @@
 const { updateStatus } = require("../controllers/Owner/mypropertiesController");
+const {postAddToWishlist}=require("../controllers/Seeker/seekerController")
 
 module.exports = function(io) {
     const countusers=[]
@@ -14,5 +15,6 @@ module.exports = function(io) {
         });
 
         updateStatus(socket);
+        postAddToWishlist(socket);
     });
 };

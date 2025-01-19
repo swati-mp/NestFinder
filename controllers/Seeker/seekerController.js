@@ -55,12 +55,18 @@ const getViewdetails = async (req, res) => {
         // console.log(req.params.id)
         const viewdetailsdata = await Property.findOne({ propertyId: req.params.id })
         const seekerprofileimage = await seekers.findOne({ email: req.cookies.email }).select("profilepicture")
-
+        const seekerwislistdata = await seekers.findOne({ email: req.cookies.email }).select("wishlist");
+        const isInWishlist = seekerwislistdata.wishlist.includes(req.params.id);
+        let selected = "";
+        if (isInWishlist) {
+            selected = "selected";
+        }
         // console.log(viewdetailsdata)
         res.render("viewdetails", { 
             property: viewdetailsdata,
             email: req.cookies.email,
-            seekerprofileimage: seekerprofileimage.profilepicture
+            seekerprofileimage: seekerprofileimage.profilepicture,
+            selected: selected
         })
     }
     catch (error) {
@@ -104,8 +110,65 @@ const postSearchProperties = async (req, res) => {
     }
 };
 
+const postAddToWishlist = async (socket) => {
+    socket.on("save-to-wishlist", async (data) => {
+        const { propertyId } = data;
+        // console.log("Property ID:", propertyId);
+
+        try {
+            // Parse cookies from the socket request
+            const cookies = socket.request.headers.cookie;
+            if (!cookies) throw new Error("No cookies found");
+            const emailCookie = cookies
+                .split("; ")
+                .find((cookie) => cookie.startsWith("email="));
+            if (!emailCookie) throw new Error("Email not found in cookies");
+
+            const email = decodeURIComponent(emailCookie.split("=")[1]);
+
+            // Fetch the user document
+            const user = await seekers.findOne({ email });
+            if (!user) {
+                return socket.emit("wishlist-updated", {
+                    message: "User not found",
+                });
+            }
+
+            // Check if the property is already in the wishlist
+            const isInWishlist = user.wishlist.includes(propertyId);
+
+            if (isInWishlist) {
+                // Remove the property from the wishlist
+                await seekers.updateOne(
+                    { email },
+                    { $pull: { wishlist: propertyId } }
+                );
+                socket.emit("wishlist-removed", {
+                    message: "Property removed from wishlist",
+                });
+            } else {
+                // Add the property to the wishlist
+                await seekers.updateOne(
+                    { email },
+                    { $addToSet: { wishlist: propertyId } }
+                );
+                socket.emit("wishlist-updated", {
+                    message: "Property added to wishlist successfully!",
+                });
+            }
+        } catch (error) {
+            console.error("Error in wishlist operation:", error);
+            socket.emit("wishlist-updated", {
+                message: "An error occurred while saving to wishlist",
+            });
+        }
+    });
+};
+
+
 module.exports={
     getSeeker,
     getViewdetails,
-    postSearchProperties
+    postSearchProperties,
+    postAddToWishlist
 }

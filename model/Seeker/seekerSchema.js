@@ -14,7 +14,8 @@ const seekerSchema=mongoose.Schema({
         zipcode: { type: String },
     },
     profilepicture:{type:String},
-    blocked:{type:Boolean,default:false}
+    blocked:{type:Boolean,default:false},
+    wishlist: [{ type: String }],
 })
 
 seekerSchema.pre('save',function(next){

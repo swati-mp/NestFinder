@@ -283,7 +283,7 @@
             }
         }
 
-          .title-container {
+        .title-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -339,16 +339,23 @@
         <h1>Property Details</h1>
 
         <div class="property-details">
-             <div class="title-container">
-            <h2 class="property-title">Property Title : {{property.title}}</h2>
-            <button class="wishlist-button" onclick="this.classList.toggle('selected')">
-                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
-                </svg>
-                Save to Wishlist
-            </button>
-        </div>
+            <div class="title-container">
+                <h2 class="property-title">Property Title : {{property.title}}</h2>
+                {{!-- <button class="wishlist-button" onclick="this.classList.toggle('selected')">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    Save to Wishlist
+                </button> --}}
+                <button id="wishlist" class="wishlist-button {{selected}}" onclick="saveToWishlist('{{property.propertyId}}')">
+                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                    </svg>
+                    Save to Wishlist
+                </button>
+            </div>
 
             <div class="property-info">
                 <div class="info-group">
@@ -446,6 +453,28 @@
             </div>
         </div>
     </div>
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <script>
+        const socket = io(); // Initialize Socket.IO client
+
+        // Emit event when the button is clicked
+        function saveToWishlist(propertyId) {
+            socket.emit('save-to-wishlist', { propertyId });
+        }
+
+        // Listen for wishlist updates
+        socket.on('wishlist-updated', (response) => {
+            document.getElementById('wishlist').classList.add('selected');
+        });
+
+        // Listen for wishlist removal
+        socket.on('wishlist-removed', (response) => {
+            document.getElementById('wishlist').classList.remove('selected');
+        });
+    </script>
+
 </body>
 
 </html>
