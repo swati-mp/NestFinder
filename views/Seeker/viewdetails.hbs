@@ -282,6 +282,54 @@
                 padding: 1rem;
             }
         }
+
+          .title-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 1.5rem 0;
+            border-bottom: 2px solid var(--border-color);
+            padding-bottom: 1rem;
+        }
+
+        .property-title {
+            margin: 0;
+            border-bottom: none;
+            padding-bottom: 0;
+        }
+
+        .wishlist-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.875rem 1.75rem;
+            background: white;
+            color: #e11d48;
+            text-decoration: none;
+            border-radius: 1rem;
+            font-weight: 600;
+            border: 2px solid #e11d48;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(244, 63, 94, 0.1);
+        }
+
+        .wishlist-button.selected {
+            background: linear-gradient(to right, #f43f5e, #e11d48);
+            color: white;
+            border: none;
+            padding: calc(0.875rem + 2px) calc(1.75rem + 2px);
+        }
+
+        .wishlist-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 12px rgba(244, 63, 94, 0.2);
+        }
+
+        .wishlist-button svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
     </style>
 </head>
 
@@ -291,7 +339,16 @@
         <h1>Property Details</h1>
 
         <div class="property-details">
+             <div class="title-container">
             <h2 class="property-title">Property Title : {{property.title}}</h2>
+            <button class="wishlist-button" onclick="this.classList.toggle('selected')">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+                </svg>
+                Save to Wishlist
+            </button>
+        </div>
 
             <div class="property-info">
                 <div class="info-group">
