@@ -36,4 +36,10 @@ router.get("/owneranalytics",getOwnerAnalytics)
 const {getOwnerAddComplaints,postOwnercomplaints}=require("../../controllers/Owner/owneraddcomplaintsController")
 router.get("/owneraddcomplaints",getOwnerAddComplaints)
 router.post("/addcomplaints",postOwnercomplaints)
+
+
+const {getOwnerNotification,postOwnerNotification} = require("../../controllers/Owner/ownernotificationController")
+router.get("/ownernotification",getOwnerNotification)
+router.post("/readownernotification",postOwnerNotification)
+
 module.exports = router

@@ -13,8 +13,7 @@
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/fontawesome.min.css">
     <link rel="stylesheet" href="/assets/plugins/fontawesome/css/all.min.css">
     <link rel="stylesheet" href="/assets/css/style.css">
-    <link rel="stylesheet" href="/seeker.css">
-    <link rel="stylesheet" href="/adminproperties.css">
+    <link rel="stylesheet" href="/adminownerseekertable.css">
 </head>
 
 <body>
@@ -143,8 +142,7 @@
                             </div>
                         </div>
                         <a class="dropdown-item" href="/owner/ownerprofile">My Profile</a>
-                        <a class="dropdown-item"
-                            onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
+                        <a class="dropdown-item" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}">Logout</a>
                     </div>
                 </li>
             </ul>
@@ -164,7 +162,7 @@
                         <li class="menu-title">
                             <span>Main Menu</span>
                         </li>
-                        <li class="submenu active">
+                        <li class="">
                             <a href="/owner"><i class="fas fa-tachometer-alt"></i> <span>Owner Dashboard</span> <span
                                     class="menu-arrow"></span></a>
                             {{!-- <ul>
@@ -176,11 +174,11 @@
                         <li class="">
                             <a href="/owner/ownerprofile"><i class="fas fa-user-circle"></i> <span>MyProfile</span>
                                 <span class="menu-arrow"></span></a>
-                            <ul>
+                            {{!-- <ul>
                                 <li><a href="index.html" class="active">Admin Dashboard</a></li>
                                 <li><a href="teacher-dashboard.html">Teacher Dashboard</a></li>
                                 <li><a href="student-dashboard.html">Student Dashboard</a></li>
-                            </ul>
+                            </ul> --}}
                         </li>
                         <li class="submenu">
                             <a href="#"><i class="fas fa-building"></i> <span> Manage Property</span> <span
@@ -192,29 +190,11 @@
                                 <li><a href="edit-student.html">Student Edit</a></li> --}}
                             </ul>
                         </li>
-                        {{!-- <li class="">
-                            <a href="/owner/ownerseekerinquiries"><i class="fas fa-chalkboard-teacher"></i> <span>
-                                    Seeker Inquiry</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="teachers.html">Admins</a></li>
-                                <li><a href="/admin/ownerdata">Owners</a></li>
-                                <li><a href="/admin/seekerdata">Seekers</a></li>
-                            </ul>
-                        </li> --}}
+                        
 
                         <li class="">
-                            <a href="/owner/owneranalytics"><i class="fas fa-chalkboard-teacher"></i> <span> Property
-                                    Analytics</span> <span class="menu-arrow"></span></a>
-                            <ul>
-                                <li><a href="teachers.html">Admins</a></li>
-                                <li><a href="/admin/ownerdata">Owners</a></li>
-                                <li><a href="/admin/seekerdata">Seekers</a></li>
-                            </ul>
-                        </li>
-
-                        <li class="">
-                            <a href="/owner/owneraddcomplaints"><i class="fas fa-chalkboard-teacher"></i> <span> Add
-                                    Complaints</span> <span class="menu-arrow"></span></a>
+                            <a href="/owner/owneranalytics"><i class="fas fa-chalkboard-teacher"></i> <span> Property Analytics</span> <span
+                                    class="menu-arrow"></span></a>
                             {{!-- <ul>
                                 <li><a href="teachers.html">Admins</a></li>
                                 <li><a href="/admin/ownerdata">Owners</a></li>
@@ -223,10 +203,19 @@
                         </li>
 
                         <li class="">
+                            <a href="/owner/owneraddcomplaints"><i class="fas fa-chalkboard-teacher"></i> <span> Add Complaints</span> <span
+                                    class="menu-arrow"></span></a>
+                             {{!-- <ul>
+                                <li><a href="teachers.html">Admins</a></li>
+                                <li><a href="/admin/ownerdata">Owners</a></li>
+                                <li><a href="/admin/seekerdata">Seekers</a></li>
+                            </ul> --}}
+                        </li>
+
+                        <li class="active">
                             <a href="/owner/ownernotification"><i class="fas fa-chalkboard-teacher"></i> <span> Notification</span> <span
                                     class="menu-arrow"></span></a>
                         </li>
-
 
                         {{!-- <li class="menu-title">
                             <span>Management</span>
@@ -273,8 +262,7 @@
                                 <!-- You can keep it hidden so it won't affect the UI -->
                                 <button type="submit" style="display: none;">Logout</button>
                             </form>
-                            <a href="#"
-                                onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
+                            <a href="#" onclick="if(confirm('Do you want to logout?')){document.getElementById('logoutForm').submit();}"><i
                                     class="fas fa-shield-alt"></i> <span> Logout </span> <span
                                     class="menu-arrow"></span></a>
                         </li>
@@ -287,64 +275,39 @@
                 <div class="page-header">
                     <div class="row">
                         <div class="col-sm-12">
-                            <h3 class="page-title">WELCOME OWNER {{#if notice}}({{notice}}){{/if}}</h3>
+                            <h3 class="page-title">Owner Notification</h3>
                             <ul class="breadcrumb">
                                 <li class="breadcrumb-item active" style="color: black;">Dashboard</li>
                             </ul>
                         </div>
                     </div>
-
                 </div>
-
                 <div class="row">
-                    <div class="col-sm-12">
-                        <form action="/owner/searchproperties" method="post">
-                            <div class="search-section">
-                                <div class="search-box">
-                                    <div class="searchtext">
-                                        <label for="">Search_By</label>
-                                    </div>
-                                    <select class="search-dropdown" name="criteria">
-                                        <option value="">Select</option>
-                                        <option value="city">City</option>
-                                        <option value="rooms">Number of Bedrooms(BHK)</option>
-                                        <option value="rent">Max-Rent</option>
-
-                                    </select>
-                                    <input type="text" id="search" class="search-input" name="searchvalue"
-                                        placeholder="Search properties...">
-                                    <button class="search-btn">Search</button>
-                                    <a href="/owner" class="search-btn">Reset</a>
-                                </div>
-                            </div>
-                        </form>
-                    </div>
-                </div><br>
-
-                <div class="row">
-                    <main class="properties-section">
-                        <!-- Property cards will be dynamically inserted here -->
-                        {{#if liveproperties}}
-                        {{#each liveproperties}}
-                        <div class="property-card">
-                            <img src="{{this.images.[0]}}" alt="Modern Family Home" class="property-image">
-                            <div class="property-info">
-                                <div class="property-title">{{this.title}}</div>
-                                <div class="property-details">{{this.bedrooms}} beds • {{this.bathrooms}} baths </div>
-                                <div class="property-title">Deposit:{{this.deposit}} </div>
-                                <div class="property-title">Rent:{{this.rent}} </div>
-                                <button class="property-btn"
-                                    onclick="window.location.href='/owner/viewdetails/{{this.propertyId}}' ">View
-                                    Details</button>
-                            </div>
-                        </div>
-                        {{/each}}
-                        {{else}}
-                        <div class="property-card">
-                            No properties available
-                        </div>
-                        {{/if}}
-                    </main>
+                    <table class="profile-table">
+                        <thead>
+                            <tr>
+                                <th>Owner Email</th>
+                                <th>Notification</th>
+                                <th>Date</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {{#each list}}
+                            <tr>
+                                <td>{{this.ownerEmail}}</td>
+                                <td>{{this.notification}}</td>
+                                <td>{{this.date}}</td>
+                                 <form action="/owner/readownernotification" method="post">
+                                    <td>
+                                        <input type="hidden" name="id" value="{{this._id}}">
+                                        <button type="submit" class="read-btn">Read</button>
+                                    </td>
+                                </form>
+                            </tr>
+                            {{/each}}
+                        </tbody>
+                    </table>
                 </div>
             </div>
         </div>
@@ -356,8 +319,8 @@
     <script src="/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <script src="/assets/plugins/slimscroll/jquery.slimscroll.min.js"></script>
     <script src="/assets/js/script.js"></script>
-
     <script src="/socket.io/socket.io.js"></script>
+
     <script src="/assets/js/handleheader.js"></script>
 </body>
 
