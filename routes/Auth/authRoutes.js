@@ -12,9 +12,18 @@ const {getLogin,postLogin}=require("../../controllers/Auth/loginController")
 router.get("/login",getLogin)
 router.post("/login",postLogin)
 
-const {getRegister,postRegister}=require("../../controllers/Auth/registerController");
+// If you Dont want otp register Feature Then Use Below Code
+
+// const {getRegister,postRegister}=require("../../controllers/Auth/registerController");
+// router.get("/register",getRegister)
+// router.post("/register",postRegister)
+
+// If you Dont want otp register Feature Then Use Above Code and comment below code 23 to 26
+
+const {getRegister,postRegister,sendOtp}=require("../../controllers/Auth/registerController");
 router.get("/register",getRegister)
 router.post("/register",postRegister)
+router.post("/send-otp",sendOtp)
 
 const { getLogout } = require("../../controllers/Auth/logoutController");
 router.post("/logout",getLogout)
