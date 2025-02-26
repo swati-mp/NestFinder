@@ -161,10 +161,42 @@ const postAddToWishlist = async (socket) => {
     });
 };
 
+const postFilterProperties=async (req,res)=>{
+    try {
+        const { city, locality } = req.body; // Extract city and locality from form submission
+        let query = { approved: true, status: "Available" };
+
+        if (city) {
+            query["address.city"] = new RegExp(`^${city}$`, 'i'); // Exact match for city (case insensitive)
+        }
+
+        if (locality) {
+            query["address.locality"] = new RegExp(`^${locality}$`, 'i'); // Exact match for locality
+        }
+
+        // Fetch seeker's profile picture
+        const seekerProfile = await seekers.findOne({ email: req.cookies.email }).select("profilepicture");
+
+        // Fetch approved properties based on the query
+        const approvedProperties = await Property.find(query);
+
+        res.render("seeker", {
+            liveproperties: approvedProperties,
+            seekerprofileimage: seekerProfile ? seekerProfile.profilepicture : null,
+            email: req.cookies.email,
+            locality:locality
+        });
+
+    } catch (error) {
+        console.error("Error fetching properties:", error);
+        res.status(500).send("An error occurred while fetching properties.");
+    }
+}
 
 module.exports={
     getSeeker,
     getViewdetails,
     postSearchProperties,
-    postAddToWishlist
+    postAddToWishlist,
+    postFilterProperties
 }

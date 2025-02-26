@@ -15,6 +15,18 @@
     <link rel="stylesheet" href="/assets/css/style.css">
     <link rel="stylesheet" href="/seeker.css">
     <link rel="stylesheet" href="/adminproperties.css">
+    <style>
+        .filter{
+            justify-content: space-around;
+        }
+        .citydrop{
+            width: 300px;
+        }
+        .filter-btn{
+            width: 30%;
+        }
+
+    </style>
 </head>
 
 <body>
@@ -306,7 +318,7 @@
                                     </div>
                                     <select class="search-dropdown" name="criteria">
                                         <option value="">Select</option>
-                                        <option value="city">City</option>
+                                        {{!-- <option value="city">City</option> --}}
                                         <option value="rooms">Number of Bedrooms(BHK)</option>
                                         <option value="rent">Max-Rent</option>
 
@@ -318,8 +330,53 @@
                                 </div>
                             </div>
                         </form>
+                        <form action="/owner/filterproperties" method="post">
+                            <div class="search-section">
+                                <div class="search-box filter">
+                                    <div class="searchtext">
+                                        <label for="">Filter_By</label>
+                                    </div>
+                                    <select class="search-dropdown citydrop" name="city">
+                                        <option value="belgaum">Belgaum</option>
+                                    </select>
+                                    <select class="search-dropdown citydrop" name="locality">
+                                        <option value="adarsh-nagar">Adarsh Nagar</option>
+                                        <option value="angol">Angol</option>
+                                        <option value="bhagya-nagar">Bhagya Nagar</option>
+                                        <option value="channamma-nagar">Channamma Nagar</option>
+                                        <option value="club-road">Club Road</option>
+                                        <option value="ganeshpur">Ganeshpur</option>
+                                        <option value="hanuman-nagar">Hanuman Nagar</option>
+                                        <option value="hindwadi">Hindwadi</option>
+                                        <option value="jadhav-nagar">Jadhav Nagar</option>
+                                        <option value="khade-bazar">Khade Bazar</option>
+                                        <option value="khasbag">Khasbag</option>
+                                        <option value="mahantesh-nagar">Mahantesh Nagar</option>
+                                        <option value="mandoli-road">Mandoli Road</option>
+                                        <option value="nehru-nagar">Nehru Nagar</option>
+                                        <option value="peeranwadi">Peeranwadi</option>
+                                        <option value="ramteerth-nagar">Ramteerth Nagar</option>
+                                        <option value="rpd-cross">RPD Cross</option>
+                                        <option value="sadashiv-nagar">Sadashiv Nagar</option>
+                                        <option value="shahapur">Shahapur</option>
+                                        <option value="shivabasava-nagar">Shivabasava Nagar</option>
+                                        <option value="tilakwadi">Tilakwadi</option>
+                                        <option value="udyambag">Udyambag</option>
+                                        <option value="vadgaon">Vadgaon</option>
+                                        <option value="vadgaon-khurd">Vadgaon Khurd</option>
+                                        <option value="vishweswarayya-nagar">Vishweswarayya Nagar</option>
+                                    </select>
+                                    <button class="search-btn filter-btn">Filter</button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div><br>
+
+                <div class="row">
+                    <h5 style="color: blue;font-weight:bold">Locality : {{locality}}</h5>
+                </div>
+                <br>
 
                 <div class="row">
                     <main class="properties-section">

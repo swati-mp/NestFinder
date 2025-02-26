@@ -121,6 +121,7 @@ const postUpdateProperties = async (req, res) => {
             description: body.description,
             rent: body.rent,
             deposit: body.deposit,
+            "address.locality": body.locality,
             "address.street": body.street,
             "address.city": body.city,
             "address.state": body.state,

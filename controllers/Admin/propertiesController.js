@@ -64,9 +64,40 @@ const postSearchProperties = async (req, res) => {
     }
 };
 
+const postFilterProperties = async (req,res)=>{
+    try {
+        // Extracting city and locality from the request body
+        const { city, locality } = req.body;
+        let query = { approved: true, status: "Available" };
+
+        // Filter by city if selected
+        if (city) {
+            query["address.city"] = new RegExp(`^${city}$`, 'i'); // Case-insensitive match
+        }
+
+        // Filter by locality if selected
+        if (locality) {
+            query["address.locality"] = new RegExp(`^${locality}$`, 'i'); // Case-insensitive match
+        }
+
+        // Fetch properties that match the filter criteria
+        const approvedProperties = await Property.find(query);
+
+        // Render the 'adminproperties' page with filtered properties
+        res.render("adminproperties", {
+            adminname: process.env.Admin_Name,
+            approvedproperties: approvedProperties
+        });
+
+    } catch (error) {
+        console.error("Error fetching properties:", error);
+        res.status(500).send("An error occurred while fetching properties.");
+    }
+}
 
 module.exports={
     getProperties,
     getViewDetails,
-    postSearchProperties
+    postSearchProperties,
+    postFilterProperties
 }

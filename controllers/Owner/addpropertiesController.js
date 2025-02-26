@@ -63,6 +63,7 @@ const postAddProperties=async(req,res)=>{
             rent: body.rent,
             deposit: body.deposit,
             address: {
+                locality:body.locality,
                 street: body.street,
                 city: body.city,
                 state: body.state,

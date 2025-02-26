@@ -9,8 +9,8 @@ const ownerSchema=mongoose.Schema({
     password:{type:String},
     address: {
         street: { type: String },
-        city: { type: String },
-        state: { type: String },
+        city: { type: String,default:"Belgaum"},
+        state: { type: String,default:"Karnataka" },
         zipcode: { type: String },
     },
     profilepicture:{type:String},

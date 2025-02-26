@@ -10,11 +10,12 @@ router.use((req, res, next) => {
     next();
 });
 
-const {getSeeker,getViewdetails,postSearchProperties}=require("../../controllers/Seeker/seekerController")
+const {getSeeker,getViewdetails,postSearchProperties,postFilterProperties}=require("../../controllers/Seeker/seekerController")
 
 router.get("/",seekerAuth,getSeeker)
 router.get("/viewdetails/:id",seekerAuth,getViewdetails)
 router.post("/searchproperties",seekerAuth,postSearchProperties)
+router.post("/filterproperties",seekerAuth,postFilterProperties)
 
 const {getSeekerProfile,postSeekerProfile,upload1} = require("../../controllers/Seeker/seekerprofileController")
 router.get("/seekerprofile",seekerAuth,getSeekerProfile)

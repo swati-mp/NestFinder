@@ -87,8 +87,45 @@ const postSearchProperties = async (req, res) => {
     }
 };
 
+const postFilterProperties = async (req, res) => {
+    try {
+        // Extracting the city and locality from the request body
+        const { city, locality } = req.body;
+        let query = { approved: true, status: "Available" };
+
+        // Filter by city
+        if (city) {
+            query["address.city"] = new RegExp(`^${city}$`, 'i'); // Case-insensitive match
+        }
+
+        // Filter by locality
+        if (locality) {
+            query["address.locality"] = new RegExp(`^${locality}$`, 'i'); // Case-insensitive match
+        }
+
+        // Fetch owner profile image
+        const ownerProfile = await owners.findOne({ email: req.cookies.email }).select("profilepicture");
+
+        // Fetch properties matching the query
+        const approvedProperties = await Property.find(query);
+
+        res.render("owner", {
+            adminname: process.env.Admin_Name,
+            liveproperties: approvedProperties,
+            ownerprofileimage: ownerProfile ? ownerProfile.profilepicture : null,
+            email: req.cookies.email,
+            locality:locality
+        });
+
+    } catch (error) {
+        console.error("Error fetching properties:", error);
+        res.status(500).send("An error occurred while fetching properties.");
+    }
+};
+
+
 module.exports={
     getOwner,
-    postSearchProperties
-
+    postSearchProperties,
+    postFilterProperties
 }

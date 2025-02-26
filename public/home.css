@@ -28,7 +28,7 @@ body {
     background-color: rgba(23, 21, 21, 0.5);
     padding: 20px;
     position: relative;
-    height: 300px;
+    height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;

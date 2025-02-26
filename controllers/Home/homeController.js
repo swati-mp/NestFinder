@@ -55,9 +55,42 @@ const postSearchProperties = async (req, res) => {
     }
 };
 
+const postFilterProperties = async (req, res) => {
+    try {
+        // Extracting the city and locality from the request body
+        const { city, locality } = req.body;
+        let query = { approved: true, status: "Available" };
+
+        // Filter by city if selected
+        if (city) {
+            query["address.city"] = new RegExp(`^${city}$`, 'i'); // Case-insensitive match
+        }
+
+        // Filter by locality if selected
+        if (locality) {
+            query["address.locality"] = new RegExp(`^${locality}$`, 'i'); // Case-insensitive match
+        }
+
+        // Fetch properties that match the filter criteria
+        const approvedProperties = await Property.find(query);
+
+        // Render the 'home' page with the filtered properties
+        res.render("home", {
+            approvedproperties: approvedProperties,
+            locality:locality
+        });
+
+    } catch (error) {
+        console.error("Error fetching properties:", error);
+        res.status(500).send("An error occurred while fetching properties.");
+    }
+};
+
+
 module.exports={
     getHome,
     getAboutUs,
     getViewDetails,
-    postSearchProperties
+    postSearchProperties,
+    postFilterProperties
 }

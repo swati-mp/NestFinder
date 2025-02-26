@@ -8,11 +8,12 @@ router.use((req, res, next) => {
     next();
 });
 
-const {getHome,getAboutUs,getViewDetails,postSearchProperties}=require("../../controllers/Home/homeController")
+const {getHome,getAboutUs,getViewDetails,postSearchProperties,postFilterProperties}=require("../../controllers/Home/homeController")
 router.get("/",getHome)
 router.get("/aboutus",getAboutUs)
 router.get("/viewdetails",getViewDetails)
 router.post("/searchproperties",postSearchProperties)
+router.post("/filterproperties",postFilterProperties)
 
 
 module.exports = router

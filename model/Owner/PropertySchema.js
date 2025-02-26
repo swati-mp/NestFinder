@@ -8,8 +8,9 @@ const PropertySchema = new mongoose.Schema({
     rent: { type: Number, required: true },
     deposit: { type: Number, required: true },
     address: {
+        locality: { type: String, required: true },
         street: { type: String, required: true },
-        city: { type: String, required: true },
+        city: { type: String,default:"Belgaum", required: true },
         state: { type: String, required: true },
         zipcode: { type: String, required: true },
     },
